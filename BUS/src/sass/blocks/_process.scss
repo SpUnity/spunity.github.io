@@ -99,6 +99,8 @@
         &__name {
           @include font_properties($grey-title, $font_title, 2.5rem, 2.7rem);
           margin: .5rem 0;
+          display: inline-block;
+          width: 100%;
         }
         &-number {
           margin-bottom: 1rem;

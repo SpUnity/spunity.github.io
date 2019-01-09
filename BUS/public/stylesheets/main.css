@@ -988,6 +988,8 @@
     line-height: 2.7rem;
     letter-spacing: 1px;
     margin: 0.5rem 0;
+    display: inline-block;
+    width: 100%;
   }
   .process-list-item-number {
     margin-bottom: 1rem;

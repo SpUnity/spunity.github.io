@@ -1,0 +1,146 @@
+.prices {
+  width: 100%;
+  height: 890px;
+  padding: 140px 10%;
+  @include display_flex(row, space-between, center);
+  background-color: $welcome-footer-background;
+
+  &-description {
+    flex: 25%;
+    height: 100%;
+
+    &__title {
+      @include font_properties($orange-color, $font_title, 2.5rem, 3.1rem);
+      text-transform: uppercase;
+      text-align: center;
+      margin: 1.2rem 0 2.5rem;
+    }
+    &__text {
+      @include font_properties($grey-text-standard, $font_standard, 1rem, 1.5rem);
+      text-align: center;
+    }
+  }
+  &-tariff {
+    flex: 25%;
+    height: 100%;
+    padding-top: 3.1rem;
+    margin-left: 1.2rem;
+    background-color: #fff;
+    box-shadow: 2.5px 4.3px 10px rgba(0, 0, 0, 0.1);
+    @include display_flex(column, space-between, center);
+
+    &__name {
+      @include font_properties(#000, $font_title, 1rem, 1.2rem);
+      text-transform: uppercase;
+      text-align: center;
+    }
+    &__number {
+      @include font_properties($orange-color, $font_title, 2rem, 2.7rem);
+      text-transform: uppercase;
+      text-align: center;
+    }
+    &__period {
+      @include font_properties($orange-color, $font_standard, 1rem, 2rem);
+      text-align: center;
+    }
+    &__additional-icon {
+      display: none;
+    }
+    &__conditions {
+      @include font_properties($grey-text-standard, $font_standard, 1rem, 2rem);
+      text-align: center;
+    }
+    &-link {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background-color: $orange-color;
+      padding: 1rem 0;
+
+      &__text {
+        @include font_properties(#fff, $font_title, 1rem, 1.5rem);
+        text-transform: uppercase;
+        margin-right: .6rem;
+      }
+      &__icon {
+        @include font_properties(#fff, $font_icon, 1rem, 1rem);
+        font-style: normal;
+        position: relative;
+        left: 0;
+        transition: .3s linear;
+      }
+      &:hover .prices-tariff-link__icon {
+        left: 1rem;
+        transition: .3s linear;
+      }
+    }
+    &:hover {
+      background-color: $tariff-background;
+    }
+    &:hover .prices-tariff__name, &:hover .prices-tariff__number, &:hover .prices-tariff__period, &:hover .prices-tariff__conditions {
+      color: #fff;
+    }
+    &:hover .prices-tariff__icon {
+      display: none;
+    }
+    &:hover .prices-tariff__additional-icon {
+      display: inline;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .prices {
+    @include display_flex(column, space-between, center);
+    height: 100%;
+
+    &-description {
+      width: 90%;
+      margin-bottom: 3rem;
+
+      &__title {
+        @include font_properties($orange-color, $font_title, 5rem, 5.5rem);
+      }
+      &__text {
+        @include font_properties($grey-text-standard, $font_standard, 1.5rem, 2.2rem);
+      }
+    }
+    &-tariff {
+      width: 90%;
+      margin-bottom: 3rem;
+      height: 100%;
+
+      &__name {
+        @include font_properties(#000, $font_title, 2rem, 2.2rem);
+        margin-bottom: 1.5rem;
+      }
+      &__number {
+        @include font_properties($orange-color, $font_title, 2.5rem, 2.7rem);
+        margin-bottom: 1.5rem;
+      }
+      &__period {
+        @include font_properties($orange-color, $font_standard, 2rem, 2.2rem);
+        margin-bottom: 1.5rem;
+      }
+      &__conditions {
+        @include font_properties($grey-text-standard, $font_standard, 2rem, 2.2rem);
+        margin: 2rem 0;
+      }
+      &__icon {
+        width: 15%;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &-link {
+        &__text {
+          @include font_properties(#fff, $font_title, 2rem, 2rem);
+        }
+        &__icon {
+          @include font_properties(#fff, $font_icon, 2rem, 2rem);
+        }
+      }
+    }
+  }
+}

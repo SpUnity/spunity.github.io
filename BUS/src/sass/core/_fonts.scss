@@ -1,0 +1,22 @@
+$font_title: 'Jappokki', sans-serif;
+$font_standard: 'Maven Pro', sans-serif;
+$font_icon: 'fontello';
+
+@font-face {
+  font-family: 'Jappokki';
+  src: url('../fonts/jappokki/jappokki-regular.ttf') format('ttf'),
+       url('../fonts/jappokki/jappokki-regular.woff') format('woff'),
+       url('../fonts/jappokki/jappokki-regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/icons/fontello.woff2?5089410') format('woff2'),
+  url('../fonts/icons/fontello.woff?5089410') format('woff'),
+  url('../fonts/icons/fontello.ttf?5089410') format('truetype'),
+  url('../fonts/icons/fontello.svg?5089410#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

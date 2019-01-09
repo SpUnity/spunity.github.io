@@ -1,0 +1,172 @@
+.contact {
+  width: 100%;
+
+  &-top {
+    min-height: 805px;
+    padding: 100px 0;
+    @include display_flex(column, space-between, center);
+
+    &__title {
+      @include font_properties($grey-title, $font_title, 2.5rem, 3.1rem);
+      text-transform: uppercase;
+      letter-spacing: .5rem;
+    }
+    &__text {
+      @include font_properties($grey-text-standard, $font_standard, 1rem, 1.7rem);
+      text-align: center;
+      margin-bottom: 7rem;
+    }
+    &__map {
+      border: none;
+      height: 400px;
+      width: 100%;
+    }
+  }
+  &-bottom {
+    width: 80%;
+    height: 645px;
+    @include display_flex(row, space-between, strecht);
+    padding-bottom: 90px;
+    margin: auto;
+
+    .contact-information {
+      flex: 1;
+      margin-right: 3rem;
+
+      &__item-name {
+        @include font_properties(#000, $font_title, .8rem, 1rem);
+        text-transform: uppercase;
+
+        &:first-child {
+          margin-top: 1.3rem;
+        }
+      }
+      &__address {
+        @include font_properties($grey-text-standard, $font_standard, .9rem, 1.5rem);
+        margin: 1.5rem 0 3.1rem;
+      }
+      &__phone-number {
+        display: inline-block;
+        @include font_properties($orange-color, $font_standard, .9rem, 1.5rem);
+        text-decoration: none;
+        margin: 1.5rem 0 3.1rem;
+      }
+      &__email {
+        display: inline-block;
+        @include font_properties($orange-color, $font_standard, .9rem, 1.5rem);
+        text-decoration: none;
+        margin-top: 1.5rem;
+      }
+    }
+    .contact-form {
+      flex: 2;
+      @include display_flex(row, center, center);
+      flex-wrap: wrap;
+
+      &__input {
+        flex: 45%;
+        border: none;
+        padding: 1rem;
+        background-color: #eee;
+        @include font_properties($grey-text-standard, $font_standard, .8rem, 1.5rem);
+        outline: none;
+
+        &:first-child {
+          margin-right: 2rem;
+        }
+        &:nth-child(3) {
+          margin-right: 2rem;
+        }
+        &-textarea {
+          flex: 100%;
+          resize: none;
+        }
+      }
+      &-button {
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        @include font_properties($grey-text-standard, $font_title, .8rem, 1.5rem);
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        cursor: pointer;
+
+        &__arrow {
+          @include font_properties($grey-text-standard, $font_icon, 1rem, 1rem);
+          font-style: normal;
+          position: relative;
+          top: .1rem;
+          left: .5rem;
+          transition: .3s linear;
+        }
+        &:hover .contact-form-button__arrow {
+          left: 1rem;
+          transition: .3s linear;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .contact {
+
+    &-top {
+      &__title {
+        @include font_properties($grey-title, $font_title, 5rem, 5.5rem);
+      }
+      &__text {
+        @include font_properties($grey-text-standard, $font_standard, 1.5rem, 2.2rem);
+        text-align: center;
+        width: 60%;
+      }
+      &__map {
+        height: 800px;
+      }
+    }
+    &-bottom {
+      height: 100%;
+      @include display_flex(column, space-between, strecht);
+
+      .contact-form {
+        margin-top: 3rem;
+        @include display_flex(column, space-between, center);
+
+        &__input {
+          width: 100%;
+          margin-bottom: 2rem;
+          padding: 3rem 2rem;
+          @include font_properties($grey-text-standard, $font_standard, 2.5rem, 2.7rem);
+
+          &:first-child {
+            margin-right: 0;
+          }
+          &:nth-child(3) {
+            margin-right: 0;
+          }
+        }
+        &-button {
+          @include font_properties($grey-text-standard, $font_title, 2.5rem, 2.7rem);
+
+          &__arrow {
+            @include font_properties($grey-text-standard, $font_icon, 2.5rem, 2.5rem);
+          }
+        }
+      }
+      .contact-information {
+        &__item-name {
+          @include font_properties(#000, $font_title, 2.5rem, 2.5rem);
+        }
+        &__address {
+          @include font_properties($grey-text-standard, $font_standard, 2.5rem, 2.5rem);
+        }
+        &__phone-number {
+          @include font_properties($orange-color, $font_standard, 2.5rem, 2.5rem);
+        }
+        &__email {
+          @include font_properties($orange-color, $font_standard, 2.5rem, 2.5rem);
+        }
+      }
+    }
+  }
+}

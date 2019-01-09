@@ -1,0 +1,22 @@
+.blog-banner {
+  padding: 100px 0 80px;
+  background-color: $welcome-footer-background;
+
+  &__title {
+    @include font_properties($grey-title, $font_title, 2.5rem, 3.2rem);
+    font-weight: 400;
+    letter-spacing: .6rem;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .blog-banner {
+    padding: 400px 0 120px;
+    &__title {
+      @include font_properties($grey-title, $font_title, 5rem, 5.2rem);
+    }
+  }
+}

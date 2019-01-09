@@ -1,0 +1,2772 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Jappokki";
+  src: url("../fonts/jappokki/jappokki-regular.ttf") format("ttf"), url("../fonts/jappokki/jappokki-regular.woff") format("woff"), url("../fonts/jappokki/jappokki-regular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "fontello";
+  src: url("../fonts/icons/fontello.woff2?5089410") format("woff2"), url("../fonts/icons/fontello.woff?5089410") format("woff"), url("../fonts/icons/fontello.ttf?5089410") format("truetype"), url("../fonts/icons/fontello.svg?5089410#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.header {
+  width: 100%;
+  height: 90px;
+  background-color: #191919;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  opacity: 0.3;
+}
+.header-container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-container__checkbox {
+  display: none;
+}
+.header-container__link {
+  display: block;
+  width: 100px;
+  height: 90px;
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/themes/nrgbusiness/img/logo.png") no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.header-container-menu__link {
+  color: #fff;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.7rem;
+  line-height: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid rgba(0, 0, 0, 0);
+  padding: 0.1rem 0.3rem;
+}
+.header-container-menu__link:not(:last-child) {
+  margin-right: 0.7rem;
+}
+.header-container-menu__link:hover {
+  color: #e66a55;
+  border: 2px solid #e66a55;
+  transition: 0.2s linear;
+}
+.header-container-button {
+  display: none;
+}
+.header-container-button__icon {
+  color: #fff;
+  font-family: "fontello";
+  font-size: 7vh;
+  line-height: 7vh;
+  letter-spacing: 1px;
+  font-style: normal;
+  display: none;
+}
+.header:hover {
+  opacity: 1;
+  transition: 0.2s linear;
+}
+
+@media (max-width: 1000px) {
+  .header {
+    min-height: 12vh;
+    opacity: 0.8;
+  }
+  .header-container {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .header-container__checkbox:checked ~ .header-container-button .header-container-button__icon-burger {
+    display: none;
+  }
+  .header-container__checkbox:checked ~ .header-container-button .header-container-button__icon-cancel {
+    display: block;
+  }
+  .header-container__checkbox:checked ~ .header-container-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-container__link {
+    width: 22vw;
+    height: 12vh;
+    margin-left: 5rem;
+  }
+  .header-container-menu {
+    display: none;
+    width: 100%;
+    background-color: #191919;
+    position: relative;
+    bottom: 0.1rem;
+  }
+  .header-container-menu__link {
+    display: inline-block;
+    width: 90%;
+    color: #fff;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2.2rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 2px solid #fff;
+    opacity: 1;
+  }
+  .header-container-menu__link:not(:last-child) {
+    margin-right: 0;
+  }
+  .header-container-button {
+    display: block;
+    margin-right: 5rem;
+  }
+  .header-container-button__icon-burger {
+    display: inline;
+  }
+  .header:hover {
+    opacity: 0.8;
+  }
+}
+.start-banner {
+  width: 100%;
+  height: 800px;
+  position: relative;
+}
+.start-banner .banner-about {
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/revslider/business/top_bg.jpg") no-repeat;
+  background-size: cover;
+}
+.start-banner .banner-philosophy {
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/revslider/business/slide_bg2.jpg") no-repeat;
+  background-size: cover;
+}
+.start-banner .banner-principles {
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/revslider/business/slide_bg3.jpg") no-repeat;
+  background-size: cover;
+}
+.start-banner .banner-experience {
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/revslider/business/slide_bg4.jpg") no-repeat;
+  background-size: cover;
+}
+.start-banner .banner {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+.start-banner .banner-blackout {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.start-banner .banner__slogan {
+  text-transform: uppercase;
+  padding-top: 240px;
+  margin-left: 10%;
+  color: #fff;
+  font-family: "Jappokki", sans-serif;
+  font-size: 3.7rem;
+  line-height: 3.7rem;
+  letter-spacing: 1px;
+}
+.start-banner .banner__slogan .banner__special-word {
+  color: #e66a55;
+}
+.start-banner .banner__text {
+  width: 600px;
+  padding-top: 2.5rem;
+  margin-left: 10%;
+  color: #fff;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 0.9rem;
+  line-height: 2rem;
+  letter-spacing: 1px;
+}
+.start-banner .radio-banner {
+  display: none;
+}
+.start-banner .radio-about:checked ~ .banner-about {
+  display: block;
+}
+.start-banner .radio-about:checked ~ .start-banner-change .change-about {
+  border-bottom: 10px solid #e66a55;
+}
+.start-banner .radio-philosophy:checked ~ .banner-philosophy {
+  display: block;
+}
+.start-banner .radio-philosophy:checked ~ .start-banner-change .change-philosophy {
+  border-bottom: 10px solid #e66a55;
+}
+.start-banner .radio-principles:checked ~ .banner-principles {
+  display: block;
+}
+.start-banner .radio-principles:checked ~ .start-banner-change .change-principles {
+  border-bottom: 10px solid #e66a55;
+}
+.start-banner .radio-experience:checked ~ .banner-experience {
+  display: block;
+}
+.start-banner .radio-experience:checked ~ .start-banner-change .change-experience {
+  border-bottom: 10px solid #e66a55;
+}
+.start-banner-change {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 120px;
+  display: flex;
+}
+.start-banner-change .change-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 10px solid rgba(0, 0, 0, 0);
+  width: 25%;
+  height: 100%;
+  cursor: pointer;
+}
+.start-banner-change .change-button__image {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 15%;
+}
+.start-banner-change .change-button__text {
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+  letter-spacing: 1px;
+}
+.start-banner-change .change-button:hover {
+  border-bottom: 10px solid #e66a55;
+}
+
+@media (max-width: 1000px) {
+  .start-banner .banner__slogan {
+    color: #fff;
+    font-family: "Jappokki", sans-serif;
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    letter-spacing: 1px;
+  }
+  .start-banner .banner__text {
+    color: #fff;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+  }
+  .start-banner-change {
+    left: 0;
+    right: 0;
+  }
+  .start-banner-change .change-button__text {
+    color: #fff;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+  }
+}
+.services {
+  width: 100%;
+  min-height: 1070px;
+  padding-top: 155px;
+}
+.services__title {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.services__description {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.services-radio {
+  display: none;
+}
+.services-radio-analysis:checked ~ .services-menu .button-analysis {
+  opacity: 1;
+}
+.services-radio-analysis:checked ~ .services-content .services-content-analysis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.services-radio-analysis:checked ~ .services-content .services-content-right {
+  background: url("http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_2bg.jpg?id=273") no-repeat;
+  background-size: cover;
+}
+.services-radio-analysis:checked ~ .services-content .services-content_whitening-analysis {
+  display: block;
+}
+.services-radio-strategy:checked ~ .services-menu .button-strategy {
+  opacity: 1;
+}
+.services-radio-strategy:checked ~ .services-content .services-content-strategy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.services-radio-strategy:checked ~ .services-content .services-content-right {
+  background: url("http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_bg.jpg?id=274") no-repeat;
+  background-size: cover;
+}
+.services-radio-strategy:checked ~ .services-content .services-content_whitening-strategy {
+  display: block;
+}
+.services-radio-social:checked ~ .services-menu .button-social {
+  opacity: 1;
+}
+.services-radio-social:checked ~ .services-content .services-content-social {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.services-radio-social:checked ~ .services-content .services-content-right {
+  background: url("http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_2bg.jpg?id=273") no-repeat;
+  background-size: cover;
+}
+.services-radio-social:checked ~ .services-content .services-content_whitening-social {
+  display: block;
+}
+.services-radio-marketing:checked ~ .services-menu .button-marketing {
+  opacity: 1;
+}
+.services-radio-marketing:checked ~ .services-content .services-content-marketing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.services-radio-marketing:checked ~ .services-content .services-content-right {
+  background: url("http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_bg.jpg?id=274") no-repeat;
+  background-size: cover;
+}
+.services-radio-marketing:checked ~ .services-content .services-content_whitening-marketing {
+  display: block;
+}
+.services-radio-development:checked ~ .services-menu .button-development {
+  opacity: 1;
+}
+.services-radio-development:checked ~ .services-content .services-content-development {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.services-radio-development:checked ~ .services-content .services-content-right {
+  background: url("http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_2bg.jpg?id=273") no-repeat;
+  background-size: cover;
+}
+.services-radio-development:checked ~ .services-content .services-content_whitening-development {
+  display: block;
+}
+.services-radio-support:checked ~ .services-menu .button-support {
+  opacity: 1;
+}
+.services-radio-support:checked ~ .services-content .services-content-support {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.services-radio-support:checked ~ .services-content .services-content-right {
+  background: url("http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_bg.jpg?id=274") no-repeat;
+  background-size: cover;
+}
+.services-radio-support:checked ~ .services-content .services-content_whitening-support {
+  display: block;
+}
+.services-menu {
+  width: 75%;
+  height: 180px;
+  padding-top: 85px;
+  margin: 0 auto;
+  display: flex;
+}
+.services-menu-button {
+  flex: 20%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.45;
+}
+.services-menu-button__image {
+  height: auto;
+}
+.services-menu-button__text {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.services-menu-button:hover {
+  opacity: 1;
+  transition: 0.2s linear;
+}
+.services-content {
+  height: 570px;
+  padding-top: 45px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.services-content_whitening {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0);
+  animation: white 0.7s ease-out;
+}
+.services-content-box {
+  height: 100%;
+  flex: 50%;
+  padding: 100px 0;
+}
+.services-content-box__title {
+  color: #fff;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.services-content-box__text {
+  color: #fff;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  letter-spacing: 1px;
+  width: 75%;
+  text-align: center;
+}
+.services-content-box__link {
+  color: #fff;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 1;
+}
+.services-content-left {
+  background-color: #e66a55;
+  display: none;
+}
+.services-content-right__image {
+  display: none;
+}
+
+@keyframes white {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+@media (max-width: 1000px) {
+  .services {
+    min-height: 1070px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .services__title {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: 1px;
+  }
+  .services__description {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    width: 60%;
+  }
+  .services-menu {
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .services-menu-button {
+    flex: 40%;
+  }
+  .services-menu-button:nth-child(-n+4) {
+    margin-bottom: 6rem;
+  }
+  .services-menu-button__text {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+  }
+  .services-menu-button__image {
+    transform: scale(2);
+    padding-bottom: 1.5rem;
+  }
+  .services-content {
+    height: 100%;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+  .services-content-box__title {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+  .services-content-box__text {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .services-content-box__link {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+  .services-content-right {
+    height: 100%;
+  }
+  .services-content-right__image {
+    display: inline;
+    width: 100%;
+    height: auto;
+    visibility: hidden;
+  }
+}
+.history {
+  width: 100%;
+  height: 850px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.history__title {
+  height: 50px;
+  margin-top: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.history__text {
+  height: 170px;
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  letter-spacing: 1px;
+  padding-bottom: 120px;
+}
+.history-content {
+  height: 400px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.history-content .history-radio {
+  display: none;
+}
+.history-content .history-radio-january:checked ~ .button-january-hidden {
+  display: block;
+  visibility: hidden;
+}
+.history-content .history-radio-january:checked ~ .center-january {
+  display: flex;
+}
+.history-content .history-radio-january:checked ~ .center-january .history-content-center-image {
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_3-400x393.jpg") no-repeat;
+  background-size: cover;
+}
+.history-content .history-radio-january:checked ~ .button-february {
+  display: block;
+  order: 1;
+}
+.history-content .history-radio-february:checked ~ .button-january {
+  display: block;
+}
+.history-content .history-radio-february:checked ~ .center-february {
+  display: flex;
+}
+.history-content .history-radio-february:checked ~ .center-february .history-content-center-image {
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_2-400x368.jpg") no-repeat;
+  background-size: cover;
+}
+.history-content .history-radio-february:checked ~ .button-march {
+  display: block;
+  order: 1;
+}
+.history-content .history-radio-march:checked ~ .button-february {
+  display: block;
+}
+.history-content .history-radio-march:checked ~ .center-march {
+  display: flex;
+}
+.history-content .history-radio-march:checked ~ .center-march .history-content-center-image {
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_1.png") no-repeat;
+  background-size: cover;
+}
+.history-content .history-radio-march:checked ~ .button-april {
+  display: block;
+  order: 1;
+}
+.history-content .history-radio-april:checked ~ .button-march {
+  display: block;
+}
+.history-content .history-radio-april:checked ~ .center-april {
+  display: flex;
+}
+.history-content .history-radio-april:checked ~ .center-april .history-content-center-image {
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_3-400x393.jpg") no-repeat;
+  background-size: cover;
+}
+.history-content .history-radio-april:checked ~ .button-may {
+  display: block;
+  order: 1;
+}
+.history-content .history-radio-may:checked ~ .button-april {
+  display: block;
+}
+.history-content .history-radio-may:checked ~ .center-may {
+  display: flex;
+}
+.history-content .history-radio-may:checked ~ .center-may .history-content-center-image {
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_2-400x368.jpg") no-repeat;
+  background-size: cover;
+}
+.history-content .history-radio-may:checked ~ .button-june {
+  display: block;
+  order: 1;
+}
+.history-content .history-radio-june:checked ~ .button-may {
+  display: block;
+}
+.history-content .history-radio-june:checked ~ .center-june {
+  display: flex;
+}
+.history-content .history-radio-june:checked ~ .center-june .history-content-center-image {
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_1.png") no-repeat;
+  background-size: cover;
+}
+.history-content .history-radio-june:checked ~ .button-june-hidden {
+  display: block;
+  visibility: hidden;
+  order: 1;
+}
+.history-content-button {
+  display: none;
+  width: 9.2rem;
+  height: 3rem;
+  padding: 0.9rem 0;
+  margin-bottom: 7.5rem;
+  background-color: #e66a55;
+  color: #fff;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  z-index: 5;
+  animation: history_scale 0.3s ease-out;
+}
+.history-content-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  display: none;
+  width: 40%;
+  height: 100%;
+  animation: history_scale 0.3s ease-out;
+}
+.history-content-center-image {
+  width: 250px;
+  height: 250px;
+  border: 1rem solid #e66a55;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.history-content-center-image__date {
+  color: #fff;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.history-content-center__caption {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.history-content-center__description {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+@keyframes history_scale {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@media (max-width: 1000px) {
+  .history {
+    height: auto;
+  }
+  .history__title {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.2rem;
+    letter-spacing: 1px;
+  }
+  .history__text {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+    width: 60%;
+    text-align: center;
+  }
+  .history-content {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .history-content-center {
+    width: 90%;
+    margin: 6rem 0;
+  }
+  .history-content-center-image {
+    width: 500px;
+    height: 500px;
+  }
+  .history-content-center-image__date {
+    color: #fff;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 1px;
+  }
+  .history-content-center__caption {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 3rem;
+    line-height: 3.2rem;
+    letter-spacing: 1px;
+    margin: 3rem 0 2rem;
+  }
+  .history-content-center__description {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+  }
+  .history-content-button {
+    margin-bottom: 0;
+    color: #fff;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    letter-spacing: 1px;
+    height: auto;
+    width: 50%;
+  }
+}
+.process {
+  width: 100%;
+  min-height: 960px;
+  padding: 180px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.process__title {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.process__text {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 80px;
+}
+.process-list {
+  width: 80%;
+  display: flex;
+}
+.process-list__radio {
+  display: none;
+}
+.process-list__radio-discuss:checked ~ .process-list-item-discuss {
+  opacity: 1;
+}
+.process-list__radio-production:checked ~ .process-list-item-production {
+  opacity: 1;
+}
+.process-list__radio-concept:checked ~ .process-list-item-concept {
+  opacity: 1;
+}
+.process-list__radio-client:checked ~ .process-list-item-client {
+  opacity: 1;
+}
+.process-list-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  opacity: 0.45;
+  cursor: pointer;
+}
+.process-list-item:hover {
+  opacity: 1;
+  transition: 0.2s linear;
+}
+.process-list-item__name {
+  margin: 1.5rem 0 4rem;
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.process-list-item-number {
+  width: 3.1rem;
+  height: 3.1rem;
+  background-color: #e66a55;
+  border: 2px solid #eee;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+.process-list-item-number__text {
+  color: #fff;
+  font-family: "Jappokki", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  letter-spacing: 1px;
+}
+.process-list-item__description {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+  width: 90%;
+}
+
+@media (max-width: 1000px) {
+  .process__title {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: 1px;
+  }
+  .process__text {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    width: 60%;
+  }
+  .process-list {
+    flex-wrap: wrap;
+  }
+  .process-list-item {
+    flex: 80%;
+    margin-bottom: 4rem;
+    opacity: 1;
+  }
+  .process-list-item__image {
+    width: 15%;
+  }
+  .process-list-item:nth-child(8) {
+    margin-bottom: 0;
+  }
+  .process-list-item__name {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+    letter-spacing: 1px;
+    margin: 0.5rem 0;
+  }
+  .process-list-item-number {
+    margin-bottom: 1rem;
+    width: 5rem;
+    height: 5rem;
+  }
+  .process-list-item-number__text {
+    color: #fff;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+  }
+  .process-list-item__description {
+    width: 50%;
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    letter-spacing: 1px;
+  }
+}
+.projects {
+  width: 100%;
+  min-height: 1030px;
+  padding: 140px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: url("http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/project_bg.png?id=48") no-repeat;
+  background-size: cover;
+}
+.projects__title {
+  color: #fff;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.projects__text {
+  color: #fff;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.projects-list {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.projects-list-item {
+  height: 250px;
+  flex: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.projects-list-item:hover .projects-list-item__image {
+  display: none;
+}
+.projects-list-item:hover .projects-link {
+  display: block;
+  flex: 25%;
+}
+.projects-list-item .projects-link {
+  display: none;
+  position: relative;
+}
+.projects-list-item .projects-link__image {
+  width: 100%;
+}
+.projects-list-item .projects-link-caption {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  background-color: #fff;
+}
+.projects-list-item .projects-link-caption__title {
+  color: #000;
+  font-family: "Jappokki", sans-serif;
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 1.2rem 0;
+}
+.projects-list-item .projects-link-caption__text {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .projects__title {
+    color: #fff;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: 1px;
+  }
+  .projects__text {
+    color: #fff;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    width: 60%;
+  }
+  .projects-list {
+    width: 50%;
+  }
+  .projects-list-item {
+    flex: 100%;
+  }
+  .projects-list-item__image {
+    width: 40%;
+  }
+}
+.team {
+  width: 100%;
+  min-height: 830px;
+  padding: 140px 0 70px;
+}
+.team__radio {
+  display: none;
+}
+.team__title {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.team-list {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.team-list-switcher {
+  display: none;
+  width: 3rem;
+  height: 3rem;
+  border: 1.5rem solid rgba(0, 0, 0, 0);
+}
+.team-list-switcher-left {
+  order: -1;
+  border-right-color: #e66a55;
+}
+.team-list-switcher-right {
+  border-left-color: #e66a55;
+}
+.team-list-person {
+  width: 23%;
+  padding-bottom: 7%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.team-list-person .person-social {
+  display: block;
+  width: 100%;
+  position: absolute;
+  padding: 2rem 0;
+  background-color: #e66a55;
+  text-align: center;
+}
+.team-list-person .person-social-link {
+  color: #fff;
+  font-family: "fontello";
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  opacity: 0.6;
+}
+.team-list-person .person-social-link:not(:last-of-type) {
+  margin-right: 15%;
+}
+.team-list-person .person-social-link:hover {
+  opacity: 1;
+}
+.team-list-person .person-social-link__icon {
+  font-style: normal;
+}
+.team-list-person__photo {
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  position: relative;
+  top: 0;
+  transition: 0.7s linear;
+}
+.team-list-person .person-caption {
+  padding: 2rem 0 0.6rem;
+  position: absolute;
+  bottom: 0;
+  opacity: 1;
+  transition: 0.4s linear;
+}
+.team-list-person .person-caption__name {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1.1rem;
+}
+.team-list-person .person-caption__profession {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.team-list-person:hover .team-list-person__photo {
+  top: 5rem;
+}
+.team-list-person:hover .person-caption {
+  opacity: 0;
+}
+
+@keyframes team_move_to_left {
+  0% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes team_move_to_right {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes team_move_to_bottom {
+  0% {
+    transform: translateY(-200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@media (max-width: 1400px) and (min-width: 1201px) {
+  .team-list-person {
+    display: none;
+  }
+  .team__radio-left:checked ~ .team-list .team-list-person:nth-child(4) {
+    display: none;
+  }
+  .team__radio-left:checked ~ .team-list .team-list-person:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_right 0.7s ease;
+  }
+  .team__radio-left:checked ~ .team-list .team-list-person:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_right 0.7s ease;
+  }
+  .team__radio-left:checked ~ .team-list .team-list-person:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_right 0.7s ease;
+  }
+  .team__radio-left:checked ~ .team-list .team-list-switcher-right {
+    display: block;
+  }
+  .team__radio-left:checked ~ .team-list .team-list-switcher-left {
+    display: block;
+    visibility: hidden;
+  }
+  .team__radio-right:checked ~ .team-list .team-list-person:nth-child(1) {
+    display: none;
+  }
+  .team__radio-right:checked ~ .team-list .team-list-person:nth-child(4) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_left 0.7s ease;
+  }
+  .team__radio-right:checked ~ .team-list .team-list-person:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_left 0.7s ease;
+  }
+  .team__radio-right:checked ~ .team-list .team-list-person:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_left 0.7s ease;
+  }
+  .team__radio-right:checked ~ .team-list .team-list-switcher-left {
+    display: block;
+  }
+  .team__radio-right:checked ~ .team-list .team-list-switcher-right {
+    display: block;
+    visibility: hidden;
+  }
+}
+@media (max-width: 1200px) and (min-width: 1001px) {
+  .team-list-person {
+    width: 35%;
+    display: none;
+    padding-bottom: 10%;
+  }
+  .team-list-switcher {
+    width: 4rem;
+    height: 4rem;
+    border: 2rem solid rgba(0, 0, 0, 0);
+  }
+  .team-list-switcher-left {
+    display: block;
+    order: -1;
+    border-right-color: #e66a55;
+  }
+  .team-list-switcher-right {
+    display: block;
+    border-left-color: #e66a55;
+  }
+  .team__radio-left:checked ~ .team-list .team-list-person:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_right 0.7s ease;
+  }
+  .team__radio-left:checked ~ .team-list .team-list-person:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_right 0.7s ease;
+  }
+  .team__radio-left:checked ~ .team-list .team-list-switcher-left {
+    visibility: hidden;
+  }
+  .team__radio-right:checked ~ .team-list .team-list-person:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_left 0.7s ease;
+  }
+  .team__radio-right:checked ~ .team-list .team-list-person:nth-child(4) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_left 0.7s ease;
+  }
+  .team__radio-right:checked ~ .team-list .team-list-switcher-right {
+    visibility: hidden;
+  }
+}
+@media (max-width: 1000px) {
+  .team__title {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: 1px;
+  }
+  .team-list-person {
+    width: 70%;
+    padding-bottom: 18%;
+    display: none;
+  }
+  .team-list-person .person-caption__name {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 3rem;
+    line-height: 3rem;
+    letter-spacing: 1px;
+  }
+  .team-list-person .person-caption__profession {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    letter-spacing: 1px;
+  }
+  .team-list-switcher {
+    width: 5rem;
+    height: 5rem;
+    border: 2.5rem solid rgba(0, 0, 0, 0);
+  }
+  .team-list-switcher-left {
+    order: -1;
+    border-right-color: #e66a55;
+  }
+  .team-list-switcher-right {
+    border-left-color: #e66a55;
+  }
+  .team__radio-leend:checked ~ .team-list .team-list-switcher-leend {
+    display: block;
+    visibility: hidden;
+    order: -1;
+  }
+  .team__radio-leend:checked ~ .team-list .team-list-person:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_right 0.7s ease;
+  }
+  .team__radio-leend:checked ~ .team-list .team-list-switcher-julia {
+    display: block;
+    border-left-color: #e66a55;
+  }
+  .team__radio-julia:checked ~ .team-list .team-list-switcher-leend {
+    display: block;
+    border-right-color: #e66a55;
+    order: -1;
+  }
+  .team__radio-julia:checked ~ .team-list .team-list-person:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_bottom 0.7s ease;
+  }
+  .team__radio-julia:checked ~ .team-list .team-list-switcher-enn {
+    display: block;
+    border-left-color: #e66a55;
+  }
+  .team__radio-enn:checked ~ .team-list .team-list-switcher-julia {
+    display: block;
+    border-right-color: #e66a55;
+    order: -1;
+  }
+  .team__radio-enn:checked ~ .team-list .team-list-person:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_bottom 0.7s ease;
+  }
+  .team__radio-enn:checked ~ .team-list .team-list-switcher-capone {
+    display: block;
+    border-left-color: #e66a55;
+  }
+  .team__radio-capone:checked ~ .team-list .team-list-switcher-enn {
+    display: block;
+    border-right-color: #e66a55;
+    order: -1;
+  }
+  .team__radio-capone:checked ~ .team-list .team-list-person:nth-child(4) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: team_move_to_left 0.7s ease;
+  }
+  .team__radio-capone:checked ~ .team-list .team-list-switcher-capone {
+    display: block;
+    visibility: hidden;
+  }
+}
+.prices {
+  width: 100%;
+  height: 890px;
+  padding: 140px 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+.prices-description {
+  flex: 25%;
+  height: 100%;
+}
+.prices-description__title {
+  color: #e66a55;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 1.2rem 0 2.5rem;
+}
+.prices-description__text {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.prices-tariff {
+  flex: 25%;
+  height: 100%;
+  padding-top: 3.1rem;
+  margin-left: 1.2rem;
+  background-color: #fff;
+  box-shadow: 2.5px 4.3px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.prices-tariff__name {
+  color: #000;
+  font-family: "Jappokki", sans-serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.prices-tariff__number {
+  color: #e66a55;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2rem;
+  line-height: 2.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.prices-tariff__period {
+  color: #e66a55;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.prices-tariff__additional-icon {
+  display: none;
+}
+.prices-tariff__conditions {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 2rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.prices-tariff-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background-color: #e66a55;
+  padding: 1rem 0;
+}
+.prices-tariff-link__text {
+  color: #fff;
+  font-family: "Jappokki", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-right: 0.6rem;
+}
+.prices-tariff-link__icon {
+  color: #fff;
+  font-family: "fontello";
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: 1px;
+  font-style: normal;
+  position: relative;
+  left: 0;
+  transition: 0.3s linear;
+}
+.prices-tariff-link:hover .prices-tariff-link__icon {
+  left: 1rem;
+  transition: 0.3s linear;
+}
+.prices-tariff:hover {
+  background-color: #f3b5aa;
+}
+.prices-tariff:hover .prices-tariff__name, .prices-tariff:hover .prices-tariff__number, .prices-tariff:hover .prices-tariff__period, .prices-tariff:hover .prices-tariff__conditions {
+  color: #fff;
+}
+.prices-tariff:hover .prices-tariff__icon {
+  display: none;
+}
+.prices-tariff:hover .prices-tariff__additional-icon {
+  display: inline;
+}
+
+@media (max-width: 1000px) {
+  .prices {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+  .prices-description {
+    width: 90%;
+    margin-bottom: 3rem;
+  }
+  .prices-description__title {
+    color: #e66a55;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: 1px;
+  }
+  .prices-description__text {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+  }
+  .prices-tariff {
+    width: 90%;
+    margin-bottom: 3rem;
+    height: 100%;
+  }
+  .prices-tariff__name {
+    color: #000;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+  }
+  .prices-tariff__number {
+    color: #e66a55;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+  }
+  .prices-tariff__period {
+    color: #e66a55;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 2rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+  }
+  .prices-tariff__conditions {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 2rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+    margin: 2rem 0;
+  }
+  .prices-tariff__icon {
+    width: 15%;
+  }
+  .prices-tariff:last-child {
+    margin-bottom: 0;
+  }
+  .prices-tariff-link__text {
+    color: #fff;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+  }
+  .prices-tariff-link__icon {
+    color: #fff;
+    font-family: "fontello";
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+  }
+}
+.skills {
+  width: 100%;
+  height: 860px;
+  background: url("http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/skills_bg.png?id=296") no-repeat;
+  background-size: cover;
+  padding: 140px 0 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.skills__title {
+  color: #fff;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.skills__description {
+  color: #fff;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 80px;
+}
+.skills-rate {
+  width: 80%;
+  height: 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.skills-rate-area {
+  width: 22%;
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #e66a55;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.1rem;
+  letter-spacing: 1px;
+}
+.skills-rate-marketing {
+  height: 170px;
+}
+.skills-rate-promo {
+  height: 160px;
+}
+.skills-rate-media {
+  height: 150px;
+}
+.skills-rate-support {
+  height: 180px;
+}
+.skills-rate-caption {
+  width: 22%;
+  height: 35%;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.skills-rate-caption__name {
+  color: #fff;
+  font-family: "Jappokki", sans-serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.skills-rate-caption__information {
+  color: #fff;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .skills {
+    height: 100%;
+  }
+  .skills__title {
+    color: #fff;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: 1px;
+  }
+  .skills__description {
+    color: #fff;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    width: 60%;
+  }
+  .skills-rate {
+    height: 100%;
+  }
+  .skills-rate-area {
+    width: 100%;
+  }
+  .skills-rate-marketing {
+    order: 1;
+  }
+  .skills-rate-promo {
+    order: 3;
+  }
+  .skills-rate-media {
+    order: 5;
+  }
+  .skills-rate-support {
+    order: 7;
+  }
+  .skills-rate-caption {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .skills-rate-caption__name {
+    color: #fff;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    letter-spacing: 1px;
+  }
+  .skills-rate-caption__information {
+    color: #fff;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+  }
+  .skills-rate-caption-marketing {
+    order: 2;
+  }
+  .skills-rate-caption-promo {
+    order: 4;
+  }
+  .skills-rate-caption-media {
+    order: 6;
+  }
+  .skills-rate-caption-support {
+    order: 8;
+  }
+  .skills-rate-caption__name {
+    margin-bottom: 1rem;
+  }
+  .skills-rate-caption:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+.from-blog {
+  width: 100%;
+  height: 990px;
+  padding: 140px 0 70px;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.from-blog__title {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.1rem;
+  letter-spacing: 1px;
+  letter-spacing: 0.6rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+.from-blog__text {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7rem;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 100px;
+}
+.from-blog .blog-list {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.from-blog .blog-list-post {
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+.from-blog .blog-list-post-image {
+  display: block;
+  width: 100%;
+}
+.from-blog .blog-list-post-image__photo {
+  display: block;
+  width: 100%;
+}
+.from-blog .blog-list-post__title {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.4rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin-top: 1.5rem;
+}
+.from-blog .blog-list-post__date {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  margin: 1.3rem 0 2rem;
+}
+.from-blog .blog-list-post-link {
+  text-decoration: none;
+}
+.from-blog .blog-list-post-link__text {
+  color: #e66a55;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.3s linear;
+}
+.from-blog .blog-list-post-link__arrow {
+  color: #e66a55;
+  font-family: "fontello";
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: 1px;
+  font-style: normal;
+  position: relative;
+  top: 0.1rem;
+  left: 0;
+  transition: 0.3s linear;
+}
+.from-blog .blog-list-post-link:hover .blog-list-post-link__text {
+  color: #000;
+}
+.from-blog .blog-list-post-link:hover .blog-list-post-link__arrow {
+  left: 1rem;
+  color: #000;
+}
+.from-blog .blog-list-padding {
+  padding: 120px 0;
+}
+@media (max-width: 1000px) {
+  .from-blog .blog-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .from-blog .blog-list-post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6rem;
+  }
+  .from-blog .blog-list-post__title {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.6rem;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  .from-blog .blog-list-post__date {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2.1rem;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  .from-blog .blog-list-post-link {
+    text-decoration: none;
+  }
+  .from-blog .blog-list-post-link__text {
+    color: #e66a55;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2rem;
+    line-height: 2.1rem;
+    letter-spacing: 1px;
+  }
+  .from-blog .blog-list-post-link__arrow {
+    color: #e66a55;
+    font-family: "fontello";
+    font-size: 2rem;
+    line-height: 2.1rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .from-blog {
+    height: auto;
+  }
+  .from-blog__title {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: 1px;
+  }
+  .from-blog__text {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    width: 60%;
+  }
+}
+.contact {
+  width: 100%;
+}
+.contact-top {
+  min-height: 805px;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact-top__title {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+}
+.contact-top__text {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7rem;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 7rem;
+}
+.contact-top__map {
+  border: none;
+  height: 400px;
+  width: 100%;
+}
+.contact-bottom {
+  width: 80%;
+  height: 645px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: strecht;
+  padding-bottom: 90px;
+  margin: auto;
+}
+.contact-bottom .contact-information {
+  flex: 1;
+  margin-right: 3rem;
+}
+.contact-bottom .contact-information__item-name {
+  color: #000;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.contact-bottom .contact-information__item-name:first-child {
+  margin-top: 1.3rem;
+}
+.contact-bottom .contact-information__address {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  margin: 1.5rem 0 3.1rem;
+}
+.contact-bottom .contact-information__phone-number {
+  display: inline-block;
+  color: #e66a55;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin: 1.5rem 0 3.1rem;
+}
+.contact-bottom .contact-information__email {
+  display: inline-block;
+  color: #e66a55;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin-top: 1.5rem;
+}
+.contact-bottom .contact-form {
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.contact-bottom .contact-form__input {
+  flex: 45%;
+  border: none;
+  padding: 1rem;
+  background-color: #eee;
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  outline: none;
+}
+.contact-bottom .contact-form__input:first-child {
+  margin-right: 2rem;
+}
+.contact-bottom .contact-form__input:nth-child(3) {
+  margin-right: 2rem;
+}
+.contact-bottom .contact-form__input-textarea {
+  flex: 100%;
+  resize: none;
+}
+.contact-bottom .contact-form-button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: #888;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+}
+.contact-bottom .contact-form-button__arrow {
+  color: #888;
+  font-family: "fontello";
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: 1px;
+  font-style: normal;
+  position: relative;
+  top: 0.1rem;
+  left: 0.5rem;
+  transition: 0.3s linear;
+}
+.contact-bottom .contact-form-button:hover .contact-form-button__arrow {
+  left: 1rem;
+  transition: 0.3s linear;
+}
+
+@media (max-width: 1000px) {
+  .contact-top__title {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.5rem;
+    letter-spacing: 1px;
+  }
+  .contact-top__text {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    width: 60%;
+  }
+  .contact-top__map {
+    height: 800px;
+  }
+  .contact-bottom {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: strecht;
+  }
+  .contact-bottom .contact-form {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .contact-bottom .contact-form__input {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 3rem 2rem;
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+    letter-spacing: 1px;
+  }
+  .contact-bottom .contact-form__input:first-child {
+    margin-right: 0;
+  }
+  .contact-bottom .contact-form__input:nth-child(3) {
+    margin-right: 0;
+  }
+  .contact-bottom .contact-form-button {
+    color: #888;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+    letter-spacing: 1px;
+  }
+  .contact-bottom .contact-form-button__arrow {
+    color: #888;
+    font-family: "fontello";
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 1px;
+  }
+  .contact-bottom .contact-information__item-name {
+    color: #000;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 1px;
+  }
+  .contact-bottom .contact-information__address {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 1px;
+  }
+  .contact-bottom .contact-information__phone-number {
+    color: #e66a55;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 1px;
+  }
+  .contact-bottom .contact-information__email {
+    color: #e66a55;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 1px;
+  }
+}
+.footer-top {
+  height: 225px;
+  padding: 4rem 0 3rem;
+  background-color: #35373e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-top__text {
+  color: #cfd1db;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.3rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.footer-bottom {
+  height: 65px;
+  background-color: #2f3138;
+  text-align: center;
+  padding-top: 1.6rem;
+}
+.footer-bottom__link {
+  color: #cfd1db;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0 1rem;
+}
+
+@media (max-width: 1000px) {
+  .footer-top {
+    height: 100%;
+  }
+  .footer-top__image {
+    width: 30%;
+    height: auto;
+    margin-bottom: 3rem;
+  }
+  .footer-top__text {
+    color: #cfd1db;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 2rem;
+    line-height: 3rem;
+    letter-spacing: 1px;
+    width: 80%;
+  }
+  .footer-bottom {
+    display: none;
+  }
+}
+.welcome-pages {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 0;
+}
+.welcome-pages__title {
+  text-transform: uppercase;
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.1rem;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+.welcome-pages__text {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  margin-bottom: 100px;
+}
+.welcome-pages-list {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.welcome-pages-list-item {
+  flex: 1;
+}
+.welcome-pages-list-item-frame {
+  border: 3px solid #333;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.welcome-pages-list-item-frame__image {
+  width: 100%;
+}
+.welcome-pages-list-item-frame-blackout {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.welcome-pages-list-item-frame-blackout-link {
+  display: none;
+  position: relative;
+  bottom: 300px;
+  border: 3px solid #fff;
+  text-decoration: none;
+  padding: 0.8rem 2rem 0.8rem 1.2rem;
+}
+.welcome-pages-list-item-frame-blackout-link__text {
+  color: #fff;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.welcome-pages-list-item-frame-blackout-link__arrow {
+  color: #fff;
+  font-family: "fontello";
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  font-style: normal;
+  position: relative;
+  left: 0.5rem;
+}
+.welcome-pages-list-item-frame-blackout-link:hover .welcome-pages-list-item-frame-blackout-link__arrow {
+  left: 1.2rem;
+}
+.welcome-pages-list-item-frame-blackout:hover .welcome-pages-list-item-frame-blackout-link {
+  display: inline-block;
+  bottom: 0;
+}
+.welcome-pages-list-item-frame:hover .welcome-pages-list-item-frame-blackout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.welcome-pages-list-item__caption {
+  text-align: center;
+  text-transform: uppercase;
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  margin-top: 2rem;
+}
+.welcome-pages-list-home {
+  margin-right: 2rem;
+}
+.welcome-pages-list-home-frame {
+  border: 3px solid #e66a55;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.welcome-pages-list-home-frame__image {
+  width: 100%;
+}
+.welcome-pages-list-sample {
+  margin-right: 2rem;
+}
+
+@media (max-width: 1000px) {
+  .welcome-pages__title {
+    margin-top: 200px;
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.1rem;
+    letter-spacing: 1px;
+  }
+  .welcome-pages__text {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 2rem;
+    line-height: 2.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 300px;
+  }
+  .welcome-pages-list {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .welcome-pages-list-item {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 6rem;
+  }
+  .welcome-pages-list-item__caption {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    letter-spacing: 1px;
+  }
+  .welcome-pages-list-item-frame-blackout-link {
+    padding: 1.6rem 4rem 1.6rem 2.4rem;
+    border: 6px solid #fff;
+  }
+  .welcome-pages-list-item-frame-blackout-link__text {
+    color: #fff;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+    letter-spacing: 1px;
+  }
+  .welcome-pages-list-item-frame-blackout-link__arrow {
+    color: #fff;
+    font-family: "fontello";
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+    letter-spacing: 1px;
+  }
+}
+.welcome-information {
+  padding: 70px 0;
+  background-color: #f1f2f1;
+}
+.welcome-information-container {
+  margin: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.welcome-information-container-item {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+.welcome-information-container-item-text {
+  width: 70%;
+}
+.welcome-information-container-item-text__title {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+.welcome-information-container-item-text__description {
+  color: #2c2c2c;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+}
+.welcome-information-container-item__image {
+  width: 20%;
+}
+
+@media (max-width: 1000px) {
+  .welcome-information-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .welcome-information-container-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 7rem;
+  }
+  .welcome-information-container-item-text {
+    width: 100%;
+  }
+  .welcome-information-container-item-text__title {
+    text-align: center;
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2.6rem;
+    line-height: 3.1rem;
+    letter-spacing: 1px;
+    margin: 1.5rem 0 1rem;
+  }
+  .welcome-information-container-item-text__description {
+    text-align: center;
+    color: #2c2c2c;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2.1rem;
+    letter-spacing: 1px;
+  }
+}
+.welcome-footer {
+  background-color: #f9f9f9;
+  padding: 95px 0 60px;
+}
+.welcome-footer__text {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .welcome-footer {
+    padding: 150px 0 100px;
+  }
+  .welcome-footer__text {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 3rem;
+    line-height: 3.2rem;
+    letter-spacing: 1px;
+  }
+}
+.blog-banner {
+  padding: 100px 0 80px;
+  background-color: #f9f9f9;
+}
+.blog-banner__title {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 2.5rem;
+  line-height: 3.2rem;
+  letter-spacing: 1px;
+  font-weight: 400;
+  letter-spacing: 0.6rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .blog-banner {
+    padding: 400px 0 120px;
+  }
+  .blog-banner__title {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 5rem;
+    line-height: 5.2rem;
+    letter-spacing: 1px;
+  }
+}
+.blog-list {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.blog-list-post {
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+.blog-list-post-image {
+  display: block;
+  width: 100%;
+}
+.blog-list-post-image__photo {
+  display: block;
+  width: 100%;
+}
+.blog-list-post__title {
+  color: #333;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.4rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin-top: 1.5rem;
+}
+.blog-list-post__date {
+  color: #888;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  margin: 1.3rem 0 2rem;
+}
+.blog-list-post-link {
+  text-decoration: none;
+}
+.blog-list-post-link__text {
+  color: #e66a55;
+  font-family: "Jappokki", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.3s linear;
+}
+.blog-list-post-link__arrow {
+  color: #e66a55;
+  font-family: "fontello";
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: 1px;
+  font-style: normal;
+  position: relative;
+  top: 0.1rem;
+  left: 0;
+  transition: 0.3s linear;
+}
+.blog-list-post-link:hover .blog-list-post-link__text {
+  color: #000;
+}
+.blog-list-post-link:hover .blog-list-post-link__arrow {
+  left: 1rem;
+  color: #000;
+}
+
+.blog-list-padding {
+  padding: 120px 0;
+}
+
+@media (max-width: 1000px) {
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .blog-list-post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6rem;
+  }
+  .blog-list-post__title {
+    color: #333;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.6rem;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  .blog-list-post__date {
+    color: #888;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2.1rem;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  .blog-list-post-link {
+    text-decoration: none;
+  }
+  .blog-list-post-link__text {
+    color: #e66a55;
+    font-family: "Jappokki", sans-serif;
+    font-size: 2rem;
+    line-height: 2.1rem;
+    letter-spacing: 1px;
+  }
+  .blog-list-post-link__arrow {
+    color: #e66a55;
+    font-family: "fontello";
+    font-size: 2rem;
+    line-height: 2.1rem;
+    letter-spacing: 1px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

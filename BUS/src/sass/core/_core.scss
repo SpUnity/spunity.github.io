@@ -1,0 +1,31 @@
+$orange-color: #e66a55;
+$grey-border-bottom: #eaeaea;
+$grey-title: #333;
+$grey-text-standard: #888;
+$dark-grey-text-standard: #2c2c2c;
+$tariff-background: #f3b5aa;
+$footer-top-background: #35373e;
+$footer-bottom-background: #2f3138;
+$footer-text-color: #cfd1db;
+$welcome-info-background: #f1f2f1;
+$welcome-footer-background: #f9f9f9;
+
+$history-image-size: 250px;
+$history-image-size-mobile: $history-image-size * 2;
+
+@mixin font_properties($color, $family, $size, $height) {
+  color: $color;
+  font-family: $family;
+  font-size: $size;
+  line-height: $height;
+  letter-spacing: 1px;
+}
+@mixin display_flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@import "_reset.scss";
+@import "_fonts.scss";

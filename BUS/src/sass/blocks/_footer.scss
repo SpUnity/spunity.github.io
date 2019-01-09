@@ -1,0 +1,49 @@
+.footer {
+
+  &-top {
+    height: 225px;
+    padding: 4rem 0 3rem;
+    background-color: $footer-top-background;
+    @include display_flex(column, space-between, center);
+
+    &__text {
+      @include font_properties($footer-text-color, $font_standard, .8rem, 1.3rem);
+      text-align: center;
+    }
+  }
+  &-bottom {
+    height: 65px;
+    background-color: $footer-bottom-background;
+    text-align: center;
+    padding-top: 1.6rem;
+
+    &__link {
+      @include font_properties($footer-text-color, $font_title, .8rem, .8rem);
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0 1rem;
+    }
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .footer {
+    &-top {
+      height: 100%;
+
+      &__image {
+        width: 30%;
+        height: auto;
+        margin-bottom: 3rem;
+      }
+      &__text {
+        @include font_properties($footer-text-color, $font_standard, 2rem, 3rem);
+        width: 80%;
+      }
+    }
+    &-bottom {
+      display: none;
+    }
+  }
+}

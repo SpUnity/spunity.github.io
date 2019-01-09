@@ -1,0 +1,255 @@
+.services {
+  width: 100%;
+  min-height: 1070px;
+  padding-top: 155px;
+
+  &__title {
+    @include font_properties($grey-title, $font_title, 2.5rem, 3.2rem);
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  &__description {
+    @include font_properties($grey-text-standard, $font_standard, 1rem, 2rem);
+    text-align: center;
+  }
+  &-radio {
+    display: none;
+
+  }
+  &-radio-analysis {
+    &:checked ~ .services-menu .button-analysis {
+      opacity: 1;
+    }
+    &:checked ~ .services-content .services-content-analysis {
+      @include display_flex(column, space-between, center);
+    }
+    &:checked ~ .services-content .services-content-right {
+      background: url('http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_2bg.jpg?id=273') no-repeat;
+      background-size: cover;
+    }
+    &:checked ~ .services-content .services-content_whitening-analysis {
+      display: block;
+    }
+  }
+  &-radio-strategy {
+    &:checked ~ .services-menu .button-strategy {
+      opacity: 1;
+    }
+    &:checked ~ .services-content .services-content-strategy {
+      @include display_flex(column, space-between, center);
+    }
+    &:checked ~ .services-content .services-content-right {
+      background: url('http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_bg.jpg?id=274') no-repeat;
+      background-size: cover;
+    }
+    &:checked ~ .services-content .services-content_whitening-strategy {
+      display: block;
+    }
+  }
+  &-radio-social {
+    &:checked ~ .services-menu .button-social {
+      opacity: 1;
+    }
+    &:checked ~ .services-content .services-content-social {
+      @include display_flex(column, space-between, center);
+    }
+    &:checked ~ .services-content .services-content-right {
+      background: url('http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_2bg.jpg?id=273') no-repeat;
+      background-size: cover;
+    }
+    &:checked ~ .services-content .services-content_whitening-social {
+      display: block;
+    }
+  }
+  &-radio-marketing {
+    &:checked ~ .services-menu .button-marketing {
+      opacity: 1;
+    }
+    &:checked ~ .services-content .services-content-marketing {
+      @include display_flex(column, space-between, center);
+    }
+    &:checked ~ .services-content .services-content-right {
+      background: url('http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_bg.jpg?id=274') no-repeat;
+      background-size: cover;
+    }
+    &:checked ~ .services-content .services-content_whitening-marketing {
+      display: block;
+    }
+  }
+  &-radio-development {
+    &:checked ~ .services-menu .button-development {
+      opacity: 1;
+    }
+    &:checked ~ .services-content .services-content-development {
+      @include display_flex(column, space-between, center);
+    }
+    &:checked ~ .services-content .services-content-right {
+      background: url('http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_2bg.jpg?id=273') no-repeat;
+      background-size: cover;
+    }
+    &:checked ~ .services-content .services-content_whitening-development {
+      display: block;
+    }
+  }
+  &-radio-support {
+    &:checked ~ .services-menu .button-support {
+      opacity: 1;
+    }
+    &:checked ~ .services-content .services-content-support {
+      @include display_flex(column, space-between, center);
+    }
+    &:checked ~ .services-content .services-content-right {
+      background: url('http://demo.themeton.com/nine/wp-content/uploads/sites/30/2015/06/serv_bg.jpg?id=274') no-repeat;
+      background-size: cover;
+    }
+    &:checked ~ .services-content .services-content_whitening-support {
+      display: block;
+    }
+  }
+  &-menu {
+    width: 75%;
+    height: 180px;
+    padding-top: 85px;
+    margin: 0 auto;
+    display: flex;
+
+    &-button {
+      flex: 20%;
+      padding: 0 1rem;
+      @include display_flex(column, space-between, center);
+      cursor: pointer;
+      opacity: 0.45;
+
+      &__image {
+        height: auto;
+      }
+      &__text {
+        @include font_properties($grey-title, $font_title, 1rem, 1rem);
+        text-transform: uppercase;
+      }
+      &:hover {
+        opacity: 1;
+        transition: .2s linear;
+      }
+    }
+  }
+  &-content {
+    height: 570px;
+    padding-top: 45px;
+    @include display_flex(row, space-between, center);
+    position: relative;
+
+    &_whitening {
+      display: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(256, 256, 256, 0);
+      animation: white .7s ease-out;
+    }
+    &-box {
+      height: 100%;
+      flex: 50%;
+      padding: 100px 0;
+
+      &__title {
+        @include font_properties(#fff, $font_title, 2rem, 2.5rem);
+        text-transform: uppercase;
+      }
+      &__text {
+        @include font_properties(#fff, $font_standard, 1rem, 2rem);
+        width: 75%;
+        text-align: center;
+      }
+      &__link {
+        @include font_properties(#fff, $font_standard, 1rem, 1.5rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        z-index: 1;
+      }
+    }
+    &-left {
+      background-color: $orange-color;
+      display: none;
+    }
+    &-right__image {
+      display: none;
+    }
+  }
+}
+
+@keyframes white {
+  0% {background-color: rgba(256, 256, 256, 1);}
+  100% {background-color: rgba(256, 256, 256, 0);}
+}
+
+
+@media (max-width: 1000px) {
+  .services {
+    min-height: 1070px;
+    @include display_flex(column, space-between, center);
+
+    &__title {
+      @include font_properties($grey-title, $font_title, 5rem, 5.5rem);
+    }
+    &__description {
+      @include font_properties($grey-text-standard, $font_standard, 1.5rem, 2rem);
+      text-align: center;
+      width: 60%;
+    }
+    &-menu {
+      height: auto;
+      flex-wrap: wrap;
+
+      &-button {
+        flex: 40%;
+
+        &:nth-child(-n + 4) {
+          margin-bottom: 6rem;
+        }
+        &__text {
+          @include font_properties($grey-title, $font_title, 2rem, 2rem);
+        }
+        &__image {
+          transform: scale(2);
+          padding-bottom: 1.5rem;
+        }
+      }
+    }
+    &-content {
+      height: 100%;
+      padding-bottom: 3rem;
+      @include display_flex(column, center, stretch);
+
+      &-box {
+        &__title {
+          font-size: 4rem;
+          margin-bottom: 2rem;
+        }
+        &__text {
+          font-size: 1.5rem;
+          margin-bottom: 2rem;
+        }
+        &__link {
+          font-size: 2.5rem;
+          line-height: 2.5rem;
+        }
+      }
+      &-right {
+        height: 100%;
+
+        &__image {
+          display: inline;
+          width: 100%;
+          height: auto;
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}

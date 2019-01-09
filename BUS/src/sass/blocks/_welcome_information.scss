@@ -1,0 +1,63 @@
+.welcome-information {
+  padding: 70px 0;
+  background-color: $welcome-info-background;
+
+  &-container {
+    margin: auto;
+    width: 80%;
+    @include display_flex(row, space-between, flex-start);
+    flex-wrap: wrap;
+
+    &-item {
+      width: 30%;
+      @include display_flex(row, space-between, flex-start);
+      margin-bottom: 2rem;
+
+      &-text {
+        width: 70%;
+
+        &__title {
+          @include font_properties($grey-title, $font_title, .9rem, 1.2rem);
+          text-transform: uppercase;
+          margin-bottom: .7rem;
+        }
+        &__description {
+          @include font_properties($dark-grey-text-standard, $font_standard, .9rem, 1.5rem);
+        }
+      }
+      &__image {
+        width: 20%;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .welcome-information {
+    &-container {
+      width: 90%;
+      @include display_flex(column, space-between, center);
+
+      &-item {
+        @include display_flex(column, space-between, center);
+        width: 100%;
+        margin-bottom: 7rem;
+
+        &-text {
+          width: 100%;
+
+          &__title {
+            text-align: center;
+            @include font_properties($grey-title, $font_title, 2.6rem, 3.1rem);
+            margin: 1.5rem 0 1rem;
+          }
+          &__description {
+            text-align: center;
+            @include font_properties($dark-grey-text-standard, $font_standard, 1.5rem, 2.1rem);
+          }
+        }
+      }
+    }
+  }
+}

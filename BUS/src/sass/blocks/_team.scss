@@ -1,0 +1,326 @@
+.team {
+  width: 100%;
+  min-height: 830px;
+  padding: 140px 0 70px;
+
+  &__radio {
+    display: none;
+  }
+  &__title {
+    @include font_properties($grey-title, $font_title, 2.5rem, 3.4rem);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  &-list {
+    width: 80%;
+    margin: 0 auto;
+    @include display_flex(row, space-between, center);
+
+    &-switcher {
+      display: none;
+      width: 3rem;
+      height: 3rem;
+      border: 1.5rem solid rgba(0, 0, 0, 0);
+
+      &-left {
+        order: -1;
+        border-right-color: $orange-color;
+      }
+      &-right {
+        border-left-color: $orange-color;
+      }
+    }
+    &-person {
+      width: 23%;
+      padding-bottom: 7%;
+      position: relative;
+      @include display_flex(column, space-between, center);
+
+      .person-social {
+        display: block;
+        width: 100%;
+        position: absolute;
+        padding: 2rem 0;
+        background-color: $orange-color;
+        text-align: center;
+
+        &-link {
+          @include font_properties(#fff, $font_icon, 1rem, 1rem);
+          text-decoration: none;
+          opacity: .6;
+
+          &:not(:last-of-type) {
+            margin-right: 15%;
+          }
+          &:hover {
+            opacity: 1;
+          }
+          &__icon {
+            font-style: normal;
+          }
+        }
+      }
+      &__photo {
+        width: 100%;
+        height: auto;
+        z-index: 1;
+        position: relative;
+        top: 0;
+        transition: .7s linear;
+      }
+      .person-caption {
+        padding: 2rem 0 .6rem;
+        position: absolute;
+        bottom: 0;
+        opacity: 1;
+        transition: .4s linear;
+
+        &__name {
+          @include font_properties($grey-title, $font_title, 1rem, 1rem);
+          text-transform: uppercase;
+          text-align: center;
+          margin-bottom: 1.1rem;
+        }
+        &__profession {
+          @include font_properties($grey-text-standard, $font_standard, 1rem, 1.5rem);
+          text-align: center;
+        }
+      }
+      &:hover .team-list-person__photo {
+        top: 5rem;
+      }
+      &:hover .person-caption {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@keyframes team_move_to_left {
+  0% {transform: translateX(200px);}
+  100% {transform: translateX(0);}
+}
+
+@keyframes team_move_to_right {
+  0% {transform: translateX(-200px);}
+  100% {transform: translateX(0);}
+}
+
+@keyframes team_move_to_bottom {
+  0% {transform: translateY(-200px);}
+  100% {transform: translateX(0);}
+}
+
+
+@media (max-width: 1400px) and (min-width: 1201px) {
+  .team {
+    &-list {
+      &-person {
+        display: none;
+      }
+    }
+    &__radio-left {
+      &:checked ~ .team-list .team-list-person:nth-child(4) {
+        display: none;
+      }
+      &:checked ~ .team-list .team-list-person:nth-child(1) {
+        @include display_flex(column, space-between, center);
+        animation: team_move_to_right .7s ease;
+      }
+      &:checked ~ .team-list .team-list-person:nth-child(2) {
+        @include display_flex(column, space-between, center);
+        animation: team_move_to_right .7s ease;
+      }
+      &:checked ~ .team-list .team-list-person:nth-child(3) {
+        @include display_flex(column, space-between, center);
+        animation: team_move_to_right .7s ease;
+      }
+      &:checked ~ .team-list .team-list-switcher-right {
+        display: block;
+      }
+      &:checked ~ .team-list .team-list-switcher-left {
+        display: block;
+        visibility: hidden;
+      }
+    }
+    &__radio-right {
+      &:checked ~ .team-list .team-list-person:nth-child(1) {
+        display: none;
+      }
+      &:checked ~ .team-list .team-list-person:nth-child(4) {
+        @include display_flex(column, space-between, center);
+        animation: team_move_to_left .7s ease;
+      }
+      &:checked ~ .team-list .team-list-person:nth-child(2) {
+        @include display_flex(column, space-between, center);
+        animation: team_move_to_left .7s ease;
+      }
+      &:checked ~ .team-list .team-list-person:nth-child(3) {
+        @include display_flex(column, space-between, center);
+        animation: team_move_to_left .7s ease;
+      }
+      &:checked ~ .team-list .team-list-switcher-left {
+        display: block;
+      }
+      &:checked ~ .team-list .team-list-switcher-right {
+        display: block;
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1200px) and (min-width: 1001px) {
+  .team {
+    &-list {
+      &-person {
+        width: 35%;
+        display: none;
+        padding-bottom: 10%;
+      }
+      &-switcher {
+        width: 4rem;
+        height: 4rem;
+        border: 2rem solid rgba(0, 0, 0, 0);
+
+        &-left {
+          display: block;
+          order: -1;
+          border-right-color: $orange-color;
+        }
+        &-right {
+          display: block;
+          border-left-color: $orange-color;
+        }
+      }
+    }
+    &__radio-left {
+      &:checked ~ .team-list .team-list-person:nth-child(1) {
+        @include display_flex(column, space-between, center);
+        animation: team_move_to_right .7s ease;
+      }
+      &:checked ~ .team-list .team-list-person:nth-child(2) {
+        @include display_flex(column, space-between, center);
+        animation: team_move_to_right .7s ease;
+      }
+      &:checked ~ .team-list .team-list-switcher-left {
+        visibility: hidden;
+      }
+    }
+    &__radio-right {
+      &:checked ~ .team-list .team-list-person:nth-child(3) {
+        @include display_flex(column, space-between, center);
+        animation: team_move_to_left .7s ease;
+      }
+      &:checked ~ .team-list .team-list-person:nth-child(4) {
+        @include display_flex(column, space-between, center);
+        animation: team_move_to_left .7s ease;
+      }
+      &:checked ~ .team-list .team-list-switcher-right {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .team {
+    &__title {
+      @include font_properties($grey-title, $font_title, 5rem, 5.5rem);
+    }
+    &-list {
+      &-person {
+        width: 70%;
+        padding-bottom: 18%;
+        display: none;
+
+        .person-caption {
+          &__name {
+            @include font_properties($grey-title, $font_title, 3rem, 3rem);
+          }
+          &__profession {
+            @include font_properties($grey-text-standard, $font_standard, 2.5rem, 3rem);
+          }
+        }
+      }
+      &-switcher {
+        width: 5rem;
+        height: 5rem;
+        border: 2.5rem solid rgba(0, 0, 0, 0);
+
+        &-left {
+          order: -1;
+          border-right-color: $orange-color;
+        }
+        &-right {
+          border-left-color: $orange-color;
+        }
+      }
+    }
+    &__radio {
+      &-leend {
+        &:checked ~ .team-list .team-list-switcher-leend {
+          display: block;
+          visibility: hidden;
+          order: -1;
+        }
+        &:checked ~ .team-list .team-list-person:nth-child(1) {
+          @include display_flex(column, space-between, center);
+          animation: team_move_to_right .7s ease;
+        }
+        &:checked ~ .team-list .team-list-switcher-julia {
+          display: block;
+          border-left-color: $orange-color;
+        }
+      }
+      &-julia {
+        &:checked ~ .team-list .team-list-switcher-leend {
+          display: block;
+          border-right-color: $orange-color;
+          order: -1;
+        }
+        &:checked ~ .team-list .team-list-person:nth-child(2) {
+          @include display_flex(column, space-between, center);
+          animation: team_move_to_bottom .7s ease;
+        }
+        &:checked ~ .team-list .team-list-switcher-enn {
+          display: block;
+          border-left-color: $orange-color;
+        }
+      }
+      &-enn {
+        &:checked ~ .team-list .team-list-switcher-julia {
+          display: block;
+          border-right-color: $orange-color;
+          order: -1;
+        }
+        &:checked ~ .team-list .team-list-person:nth-child(3) {
+          @include display_flex(column, space-between, center);
+          animation: team_move_to_bottom .7s ease;
+        }
+        &:checked ~ .team-list .team-list-switcher-capone {
+          display: block;
+          border-left-color: $orange-color;
+        }
+      }
+      &-capone {
+        &:checked ~ .team-list .team-list-switcher-enn {
+          display: block;
+          border-right-color: $orange-color;
+          order: -1;
+        }
+        &:checked ~ .team-list .team-list-person:nth-child(4) {
+          @include display_flex(column, space-between, center);
+          animation: team_move_to_left .7s ease;
+        }
+        &:checked ~ .team-list .team-list-switcher-capone {
+          display: block;
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}

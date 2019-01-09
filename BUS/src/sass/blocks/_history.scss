@@ -1,0 +1,233 @@
+.history {
+  width: 100%;
+  height: 850px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid $grey-border-bottom;
+  @include display_flex(column, space-between, center);
+
+  &__title {
+    height: 50px;
+    margin-top: 1.2rem;
+    margin-bottom: 1.5rem;
+    @include font_properties($grey-title, $font_title, 2.5rem, 3.2rem);
+    text-transform: uppercase;
+  }
+  &__text {
+    height: 170px;
+    @include font_properties($grey-text-standard, $font_standard, 1rem, 2rem);
+    padding-bottom: 120px;
+  }
+  &-content {
+    height: 400px;
+    width: 80%;
+    @include display_flex(row, space-between, center);
+    position: relative;
+
+    .history-radio {
+      display: none;
+
+      &-january {
+        &:checked ~ .button-january-hidden {
+          display: block;
+          visibility: hidden;
+        }
+        &:checked ~ .center-january {
+          display: flex;
+
+          .history-content-center-image {
+            background: url('http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_3-400x393.jpg') no-repeat;
+            background-size: cover;
+          }
+        }
+        &:checked ~ .button-february {
+          display: block;
+          order: 1;
+        }
+      }
+      &-february {
+        &:checked ~ .button-january {
+          display: block;
+        }
+        &:checked ~ .center-february {
+          display: flex;
+
+          .history-content-center-image {
+            background: url('http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_2-400x368.jpg') no-repeat;
+            background-size: cover;
+          }
+        }
+        &:checked ~ .button-march {
+          display: block;
+          order: 1;
+        }
+      }
+      &-march {
+        &:checked ~ .button-february {
+          display: block;
+        }
+        &:checked ~ .center-march {
+          display: flex;
+
+          .history-content-center-image {
+            background: url('http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_1.png') no-repeat;
+            background-size: cover;
+          }
+        }
+        &:checked ~ .button-april {
+          display: block;
+          order: 1;
+        }
+      }
+      &-april {
+        &:checked ~ .button-march {
+          display: block;
+        }
+        &:checked ~ .center-april {
+          display: flex;
+
+          .history-content-center-image {
+            background: url('http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_3-400x393.jpg') no-repeat;
+            background-size: cover;
+          }
+        }
+        &:checked ~ .button-may {
+          display: block;
+          order: 1;
+        }
+      }
+      &-may {
+        &:checked ~ .button-april {
+          display: block;
+        }
+        &:checked ~ .center-may {
+          display: flex;
+
+          .history-content-center-image {
+            background: url('http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_2-400x368.jpg') no-repeat;
+            background-size: cover;
+          }
+        }
+        &:checked ~ .button-june {
+          display: block;
+          order: 1;
+        }
+      }
+      &-june {
+        &:checked ~ .button-may {
+          display: block;
+        }
+        &:checked ~ .center-june {
+          display: flex;
+
+          .history-content-center-image {
+            background: url('http://demo.themeton.com/nrgbusiness/wp-content/uploads/sites/51/2015/10/history_1.png') no-repeat;
+            background-size: cover;
+          }
+        }
+        &:checked ~ .button-june-hidden {
+          display: block;
+          visibility: hidden;
+          order: 1;
+        }
+      }
+    }
+    &-button {
+      display: none;
+      width: 9.2rem;
+      height: 3rem;
+      padding: .9rem 0;
+      margin-bottom: 7.5rem;
+      background-color: $orange-color;
+      @include font_properties(#fff, $font_standard, 1.2rem, 1.5rem);
+      text-transform: uppercase;
+      text-align: center;
+      cursor: pointer;
+      z-index: 5;
+      animation: history_scale .3s ease-out;
+
+    }
+    &-center {
+      @include display_flex(column, space-around, center);
+      display: none;
+      width: 40%;
+      height: 100%;
+      animation: history_scale .3s ease-out;
+
+      &-image {
+        width: $history-image-size;
+        height: $history-image-size;
+        border: 1rem solid $orange-color;
+        border-radius: 50%;
+        @include display_flex(row, center, center);
+        cursor: pointer;
+
+        &__date {
+          @include font_properties(#fff, $font_standard, 1.2rem, 1.5rem);
+          text-transform: uppercase;
+        }
+      }
+      &__caption {
+        @include font_properties($grey-title, $font_title, 1rem, 1.2rem);
+        text-transform: uppercase;
+      }
+      &__description {
+        @include font_properties($grey-text-standard, $font_standard, 1rem, 1.5rem);
+        text-align: center;
+      }
+    }
+  }
+}
+
+@keyframes history_scale {
+  0% {transform: scale(0);}
+  80% {transform: scale(1.2);}
+  100% {transform: scale(1);}
+}
+
+
+@media (max-width: 1000px) {
+  .history {
+    height: auto;
+
+    &__title {
+      @include font_properties($grey-title, $font_title, 5rem, 5.2rem);
+    }
+    &__text {
+      @include font_properties($grey-text-standard, $font_standard, 1.5rem, 2rem);
+      width: 60%;
+      text-align: center;
+    }
+    &-content {
+      height: auto;
+      @include display_flex(column, space-between, center);
+
+      &-center {
+        width: 90%;
+        margin: 6rem 0;
+
+        &-image {
+          width: $history-image-size-mobile;
+          height: $history-image-size-mobile;
+
+          &__date {
+            @include font_properties(#fff, $font_standard, 2.5rem, 2.5rem);
+          }
+        }
+        &__caption {
+          @include font_properties($grey-title, $font_title, 3rem, 3.2rem);
+          margin: 3rem 0 2rem;
+        }
+        &__description {
+          @include font_properties($grey-text-standard, $font_standard, 1.5rem, 2rem);
+        }
+      }
+      &-button {
+        margin-bottom: 0;
+        @include font_properties(#fff, $font_standard, 3rem, 3.5rem);
+        height: auto;
+        width: 50%;
+      }
+    }
+  }
+}

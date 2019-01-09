@@ -1,0 +1,21 @@
+.welcome-footer {
+  background-color: $welcome-footer-background;
+  padding: 95px 0 60px;
+
+  &__text {
+    @include font_properties($grey-title, $font_title, .9rem, 1.2rem);
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .welcome-footer {
+    padding: 150px 0 100px;
+
+    &__text {
+      @include font_properties($grey-title, $font_title, 3rem, 3.2rem);
+    }
+  }
+}

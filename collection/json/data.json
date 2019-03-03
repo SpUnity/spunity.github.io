@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Психо",
+    "year": 1960,
+    "genre": "триллер, ужасы",
+    "director": "Альфред Хичкок",
+    "country": "США",
+    "duration": "109мин./01:49",
+    "linkImage": "./images/psycho.jpg"
+  },
+  {
+    "name": "В случае убийства набирайте «М»",
+    "year": 1954,
+    "genre": "фильм-нуар, ужасы",
+    "director": "Альфред Хичкок",
+    "country": "США",
+    "duration": "105мин./01:45",
+    "linkImage": "./images/casekilling.jpg"
+  },
+  {
+    "name": "Окно во двор",
+    "year": 1954,
+    "genre": "триллер, детектив",
+    "director": "Альфред Хичкок",
+    "country": "США",
+    "duration": "112мин./01:52",
+    "linkImage": "./images/window.jpg"
+  },
+  {
+    "name": "Танцующая в темноте",
+    "year": 2000,
+    "genre": "мюзикл, драма",
+    "director": "Ларс фон Триер",
+    "country": "Дания, Швеция, США",
+    "duration": "135мин./02:15",
+    "linkImage": "./images/dancer.jpg"
+  },
+  {
+    "name": "Догвилль",
+    "year": 2003,
+    "genre": "триллер, драма",
+    "director": "Ларс фон Триер",
+    "country": "Дания, Нидерланды, Швеция",
+    "duration": "178мин./02:58",
+    "linkImage": "./images/dogville.jpg"
+  },
+  {
+    "name": "Скала",
+    "year": 1996,
+    "genre": "триллер, боевик",
+    "director": "Майкл Бэй",
+    "country": "США",
+    "duration": "136мин./02:16",
+    "linkImage": "./images/rock.jpg"
+  },
+  {
+    "name": "Перл-Харбор",
+    "year": 2001,
+    "genre": "боевик, драма",
+    "director": "Майкл Бэй",
+    "country": "США",
+    "duration": "183мин./03:03",
+    "linkImage": "./images/pearlharbor.jpg"
+  },
+  {
+    "name": "Армагеддон",
+    "year": 1998,
+    "genre": "фантастика, боевик",
+    "director": "Майкл Бэй",
+    "country": "США",
+    "duration": "144мин./02:24",
+    "linkImage": "./images/armageddon.jpg"
+  },
+  {
+    "name": "Трансформеры",
+    "year": 2007,
+    "genre": "фантастика, боевик",
+    "director": "Майкл Бэй",
+    "country": "США",
+    "duration": "143мин./02:23",
+    "linkImage": "./images/transformer.jpg"
+  }
+]

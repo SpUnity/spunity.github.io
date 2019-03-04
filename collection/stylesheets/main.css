@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+.search {
+  padding: 1.5rem;
+}
+.search-form {
+  text-align: center;
+}
+.search-form-input {
+  width: 50%;
+}
+
+.result {
+  display: none;
+  justify-content: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d44;
+  margin-bottom: 20px;
+}
+.result-image {
+  height: 210px;
+  width: 130px;
+  margin-right: 3%;
+}
+.result-table {
+  border-collapse: collapse;
+  width: 50%;
+  height: 210px;
+}
+.result-table-row {
+  border-bottom: 1px dashed #999;
+}
+.result-table-cell {
+  padding: 0.5rem;
+  border-left: 1px solid #999;
+}
+.result-table-cell-title {
+  width: 25%;
+  color: #d44;
+}
+.result-table-cell-content {
+  padding-left: 1rem;
+  color: #444;
+}
+
+.all-movies {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.all-movies_checkbox:checked ~ .all-movies-list {
+  display: block;
+}
+.all-movies-list {
+  border: 1px solid #555;
+  display: none;
+}
+.all-movies-list_item {
+  padding: 0.3rem;
+}
+.all-movies-list_item:not(:last-of-type) {
+  border-bottom: 1px solid #c44;
+}
+
+/*# sourceMappingURL=main.css.map */

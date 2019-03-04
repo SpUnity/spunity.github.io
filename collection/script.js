@@ -8,7 +8,7 @@ xhr = new XMLHttpRequest(),
 data = []
 ;
 
-if (JSON.parse(localStorage['allMovies'])) {
+if (localStorage['allMovies']) {
   data = JSON.parse(localStorage['allMovies']);
 } else {
   xhr.open('GET', 'https://spunity.github.io/collection/json/data.json');

@@ -6,7 +6,7 @@
     "director": "Альфред Хичкок",
     "country": "США",
     "duration": "109мин./01:49",
-    "linkImage": "./images/psycho.jpg"
+    "image": "https://spunity.github.io/collection/images/psycho.jpg"
   },
   {
     "name": "В случае убийства набирайте «М»",
@@ -15,7 +15,7 @@
     "director": "Альфред Хичкок",
     "country": "США",
     "duration": "105мин./01:45",
-    "linkImage": "./images/casekilling.jpg"
+    "image": "https://spunity.github.io/collection/images/casekilling.jpg"
   },
   {
     "name": "Окно во двор",
@@ -24,7 +24,7 @@
     "director": "Альфред Хичкок",
     "country": "США",
     "duration": "112мин./01:52",
-    "linkImage": "./images/window.jpg"
+    "image": "https://spunity.github.io/collection/images/window.jpg"
   },
   {
     "name": "Танцующая в темноте",
@@ -33,7 +33,7 @@
     "director": "Ларс фон Триер",
     "country": "Дания, Швеция, США",
     "duration": "135мин./02:15",
-    "linkImage": "./images/dancer.jpg"
+    "image": "https://spunity.github.io/collection/images/dancer.jpg"
   },
   {
     "name": "Догвилль",
@@ -42,7 +42,7 @@
     "director": "Ларс фон Триер",
     "country": "Дания, Нидерланды, Швеция",
     "duration": "178мин./02:58",
-    "linkImage": "./images/dogville.jpg"
+    "image": "https://spunity.github.io/collection/images/dogville.jpg"
   },
   {
     "name": "Скала",
@@ -51,7 +51,7 @@
     "director": "Майкл Бэй",
     "country": "США",
     "duration": "136мин./02:16",
-    "linkImage": "./images/rock.jpg"
+    "image": "https://spunity.github.io/collection/images/rock.jpg"
   },
   {
     "name": "Перл-Харбор",
@@ -60,7 +60,7 @@
     "director": "Майкл Бэй",
     "country": "США",
     "duration": "183мин./03:03",
-    "linkImage": "./images/pearlharbor.jpg"
+    "image": "https://spunity.github.io/collection/images/pearlharbor.jpg"
   },
   {
     "name": "Армагеддон",
@@ -69,7 +69,7 @@
     "director": "Майкл Бэй",
     "country": "США",
     "duration": "144мин./02:24",
-    "linkImage": "./images/armageddon.jpg"
+    "image": "https://spunity.github.io/collection/images/armageddon.jpg"
   },
   {
     "name": "Трансформеры",
@@ -78,6 +78,6 @@
     "director": "Майкл Бэй",
     "country": "США",
     "duration": "143мин./02:23",
-    "linkImage": "./images/transformer.jpg"
+    "image": "https://spunity.github.io/collection/images/transformer.jpg"
   }
 ]

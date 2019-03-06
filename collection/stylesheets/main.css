@@ -18,9 +18,10 @@
 .result {
   display: none;
   justify-content: center;
-  padding-bottom: 20px;
+  padding: 1rem 0;
   border-bottom: 1px solid #d44;
-  margin-bottom: 20px;
+  margin: 1rem 0;
+  background-image: linear-gradient(#ddd, #999);
 }
 .result-image {
   height: 210px;
@@ -65,6 +66,29 @@
 }
 .all-movies-list_item:not(:last-of-type) {
   border-bottom: 1px solid #c44;
+}
+
+.filter {
+  width: 60%;
+  margin: auto;
+  background-color: #6c6;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.filter-amount {
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+.filter-container {
+  display: none;
+}
+.filter-container-caption {
+  margin-left: 1rem;
+}
+.filter-checkbox:checked ~ .filter-container {
+  display: block;
 }
 
 /*# sourceMappingURL=main.css.map */

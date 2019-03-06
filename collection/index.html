@@ -31,9 +31,42 @@
     <form class="search-form" id="movies">
       <label class="search-form-wrapper">Поиск фильма
         <input class="search-form-input" id="searchString" type="search" name="search" placeholder="Введите название фильма или режиссера">
-        <button class="search-form-button" id="searchStart" type="button" name="button">Найти</button>
+        <button class="search-form-button" id="searchStart" type="submit" name="button">Найти</button>
       </label>
     </form>
+  </div>
+
+  <div class="filter">
+    <label for="filters">Показать фильмы (фильтры):</label>
+    <input class="filter-checkbox" type="checkbox" id="filters">
+    <span class="filter-amount">Показано фильмов: <span id="amountMovies">0</span></span>
+    <div class="filter-container">
+      <div class="filter-container-year">
+        <span>Год:</span>
+        <label class="filter-container-caption">До 2000<input id="beforeYear" type="checkbox" name="year"></label>
+        <label class="filter-container-caption">Начиная с 2000<input id="afterYear" type="checkbox" name="year"></label>
+      </div>
+      <div id="genres">
+        <span>Жанр:</span>
+        <label class="filter-container-caption">Триллер<input type="checkbox"></label>
+        <label class="filter-container-caption">Ужасы<input type="checkbox"></label>
+        <label class="filter-container-caption">Фильм-нуар<input type="checkbox"></label>
+        <label class="filter-container-caption">Детектив<input type="checkbox"></label>
+        <label class="filter-container-caption">Мюзикл<input type="checkbox"></label>
+        <label class="filter-container-caption">Драма<input type="checkbox"></label>
+        <label class="filter-container-caption">Боевик<input type="checkbox"></label>
+        <label class="filter-container-caption">Фантастика<input type="checkbox"></label>
+        <!-- триллер, ужасы, фильм-нуар, детектив, мюзикл, драма, боевик, фантастика -->
+      </div>
+      <div id="countries">
+        <span>Страна:</span>
+        <label class="filter-container-caption">США<input type="checkbox"></label>
+        <label class="filter-container-caption">Дания<input type="checkbox"></label>
+        <label class="filter-container-caption">Швеция<input type="checkbox"></label>
+        <label class="filter-container-caption">Нидерланды<input type="checkbox"></label>
+        <!-- США, Дания, Швеция, Нидерланды, -->
+      </div>
+    </div>
   </div>
 
   <div class="result">

@@ -23,6 +23,8 @@ if (!showError(form, input, button, result)) {
     ;
 
     deletePreviousElements();
+    turnOffFilter();
+    showAmountMovies();
     movies = filterSearch(filteredData, userText);
 
     if (!movies.length) {
@@ -37,7 +39,6 @@ if (!showError(form, input, button, result)) {
       addNewMovie(showingResult);
     });
 
-    turnOffFilter();
     showAmountMovies();
   };
 }

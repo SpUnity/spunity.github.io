@@ -1,82 +1,140 @@
 [
   {
+    "id": 1,
     "name": "Психо",
     "year": 1960,
-    "genre": "триллер, ужасы",
+    "genreId": [
+      5,
+      6
+    ],
     "director": "Альфред Хичкок",
-    "country": "США",
+    "countryId": [
+      3
+    ],
     "duration": "109мин./01:49",
     "linkImage": "https://spunity.github.io/collection/images/psycho.jpg"
   },
   {
+    "id": 2,
     "name": "В случае убийства набирайте «М»",
     "year": 1954,
-    "genre": "фильм-нуар, ужасы",
+    "genreId": [
+      8,
+      6
+    ],
     "director": "Альфред Хичкок",
-    "country": "США",
+    "countryId": [
+      3
+    ],
     "duration": "105мин./01:45",
     "linkImage": "https://spunity.github.io/collection/images/casekilling.jpg"
   },
   {
+    "id": 3,
     "name": "Окно во двор",
     "year": 1954,
-    "genre": "триллер, детектив",
+    "genreId": [
+      5,
+      2
+    ],
     "director": "Альфред Хичкок",
-    "country": "США",
+    "countryId": [
+      3
+    ],
     "duration": "112мин./01:52",
     "linkImage": "https://spunity.github.io/collection/images/window.jpg"
   },
   {
+    "id": 4,
     "name": "Танцующая в темноте",
     "year": 2000,
-    "genre": "мюзикл, драма",
+    "genreId": [
+      4,
+      3
+    ],
     "director": "Ларс фон Триер",
-    "country": "Дания, Швеция, США",
+    "countryId": [
+      3,
+      1,
+      4
+    ],
     "duration": "135мин./02:15",
     "linkImage": "https://spunity.github.io/collection/images/dancer.jpg"
   },
   {
+    "id": 5,
     "name": "Догвилль",
     "year": 2003,
-    "genre": "триллер, драма",
+    "genreId": [
+      5,
+      3
+    ],
     "director": "Ларс фон Триер",
-    "country": "Дания, Нидерланды, Швеция",
+    "countryId": [
+      1,
+      2,
+      4
+    ],
     "duration": "178мин./02:58",
     "linkImage": "https://spunity.github.io/collection/images/dogville.jpg"
   },
   {
+    "id": 6,
     "name": "Скала",
     "year": 1996,
-    "genre": "триллер, боевик",
+    "genreId": [
+      5,
+      1
+    ],
     "director": "Майкл Бэй",
-    "country": "США",
+    "countryId": [
+      3
+    ],
     "duration": "136мин./02:16",
     "linkImage": "https://spunity.github.io/collection/images/rock.jpg"
   },
   {
+    "id": 7,
     "name": "Перл-Харбор",
     "year": 2001,
-    "genre": "боевик, драма",
+    "genreId": [
+      1,
+      3
+    ],
     "director": "Майкл Бэй",
-    "country": "США",
+    "countryId": [
+      3
+    ],
     "duration": "183мин./03:03",
     "linkImage": "https://spunity.github.io/collection/images/pearlharbor.jpg"
   },
   {
+    "id": 8,
     "name": "Армагеддон",
     "year": 1998,
-    "genre": "фантастика, боевик",
+    "genreId": [
+      7,
+      1
+    ],
     "director": "Майкл Бэй",
-    "country": "США",
+    "countryId": [
+      3
+    ],
     "duration": "144мин./02:24",
     "linkImage": "https://spunity.github.io/collection/images/armageddon.jpg"
   },
   {
+    "id": 9,
     "name": "Трансформеры",
     "year": 2007,
-    "genre": "фантастика, боевик",
+    "genreId": [
+      7,
+      1
+    ],
     "director": "Майкл Бэй",
-    "country": "США",
+    "countryId": [
+      3
+    ],
     "duration": "143мин./02:23",
     "linkImage": "https://spunity.github.io/collection/images/transformer.jpg"
   }

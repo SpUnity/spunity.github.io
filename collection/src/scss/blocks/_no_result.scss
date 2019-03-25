@@ -1,0 +1,36 @@
+.no-result {
+  display: none;
+  height: 100%;
+  @include position_absolute(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+
+  &-window {
+    width: 30%;
+    height: 20rem;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 1rem;
+    @include position_absolute(20%, 35%, auto, 35%);
+    z-index: 101;
+
+    &_text {
+      @include position_absolute(calc(50% - 1rem), 10%, auto, 10%);
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      width: 80%;
+      color: #f00;
+    }
+    &_button {
+      @include position_absolute(auto, .5rem, .5rem, auto);
+      @include button_filter(#fff, .5rem, #444);
+      opacity: .8;
+      outline: none;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

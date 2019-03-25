@@ -1,0 +1,21 @@
+.result-movie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: .4rem auto;
+  padding: .4rem;
+  border-radius: .5rem;
+  background-image: $grey_gradient;
+  color: #000;
+
+  &-button {
+    @include button_filter(#fff, .4rem, $red);
+    margin: 0 .3rem;
+
+    &:hover {
+      background-color: #fff;
+      color: $red;
+    }
+  }
+}

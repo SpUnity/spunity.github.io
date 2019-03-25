@@ -1,0 +1,23 @@
+.all-movies {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  &_checkbox {
+    &:checked ~ .all-movies-list {
+      display: block;
+    }
+  }
+  &-list {
+    border: 1px solid #555;
+    display: none;
+
+    &_item {
+      padding: .3rem;
+
+      &:not(:last-of-type) {
+        border-bottom: 1px solid #c44;
+      }
+    }
+  }
+}

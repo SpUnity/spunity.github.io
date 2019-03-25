@@ -1,0 +1,54 @@
+.info {
+  display: none;
+  width: 60%;
+  margin: auto;
+
+  &_return-button {
+    @include button_filter(#fff, .4rem, $red);
+    margin: 0 .3rem;
+    border: 2px solid #fff;
+
+    &:hover {
+      background-color: #fff;
+      color: $red;
+      border: 2px solid $red;
+    }
+  }
+  &-data {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3rem;
+    padding: 1rem;
+    background-image: $grey_gradient;
+
+    &_banner {
+      width: 10rem;
+      height: 15rem;
+    }
+    &-text {
+      width: 60%;
+
+      &-string {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: .3rem;
+
+        &_view {
+          border-radius: .5rem;
+          background: #fff;
+          padding: .3rem;
+          font-weight: bold;
+        }
+        &_title {
+          width: 35%;
+          color: $red;
+        }
+        &_content {
+          width: 60%;
+          color: #444;
+        }
+      }
+    }
+  }
+}

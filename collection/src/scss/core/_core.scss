@@ -1,0 +1,25 @@
+@import "./_reset";
+
+$green: #30cc30;
+$grey_gradient: linear-gradient(#ddd, #999);
+$red: #d44;
+
+@mixin button_filter($color, $padding, $background) {
+  font-weight: bold;
+  color: $color;
+  padding: $padding;
+  border-radius: .7rem;
+  background: $background;
+  cursor: pointer;
+  border: none;
+  transition: .3s;
+  outline: none;
+}
+
+@mixin position_absolute($top, $right, $bottom, $left) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}

@@ -1,109 +1,66 @@
-import executeAndDeleteHandler from '../helpers/delete_handler';
-import fillFilters from '../helpers/fill_filters';
-import isButtonSelected from '../helpers/check_button';
-import handleFilterHeaderButtons from '../helpers/handle_filter_header';
-import filterMovies from '../helpers/filter_movies';
-import transformIdToString from '../helpers/transform_to_string';
+import HelperCollection from '../helpers/app-helpers';
 
-function ModelCollection() {
-  this.arrHeaderButtons = ['button_year', 'button_genre', 'button_country'];
-}
+let helper = new HelperCollection();
 
-ModelCollection.prototype.checkData = function() {
-  let tempKeys = false,
-  tempData = false
-  ;
-  $.ajax('https://spunity.github.io/collection/json/keys.json', {
-    method: 'GET',
-    dataType: 'json',
-    error: function () {
-          tempKeys = JSON.parse(localStorage['allKeys']);
-          fillFilters(tempKeys);
-          sendAjaxForMainData();
-    },
-    success: function(dataKeys, status, xhr) {
-      localStorage['allKeys'] = xhr.responseText;
-      tempKeys = dataKeys;
-      fillFilters(tempKeys);
-      sendAjaxForMainData();
+export default class ModelCollection {
+  constructor () {
+    this.arrHeaderButtons = ['button_year', 'button_genre', 'button_country'];
+  }
+
+  filterData(elem) {
+    let id = elem.id
+    ;
+    $('#'+ id).toggleClass('selected-button');
+
+    if (helper.handleFilterHeaderButtons(id, this.arrHeaderButtons)) {
+      return false;
     }
-  });
-
-  let timerId = setInterval(function() {
-    window.keys = tempKeys;
-    window.allData = tempData;
-    if (keys && allData) {
-      executeAndDeleteHandler($('#list-checkbox'));
-      clearInterval(timerId);
-    }
-  }, 200);
-
-  function sendAjaxForMainData() {
-    $.ajax('https://spunity.github.io/collection/json/data.json', {
-      method: 'GET',
-      dataType: 'json',
-      error: function () {
-          tempData = JSON.parse(localStorage['allMovies']);
-      },
-      success: function(data, status, xhr) {
-        localStorage['allMovies'] = xhr.responseText;
-        tempData = data;
-      }
+    return allData.filter(function(item) {
+      return helper.filterMovies(item);
     });
   }
-};
 
-ModelCollection.prototype.filterData = function(elem) {
-  let id = elem.id
-  ;
-  $('#'+ id).toggleClass('selected-button');
-
-  if (handleFilterHeaderButtons(id, this.arrHeaderButtons)) {
-    return false;
-  }
-  return allData.filter(function(item) {
-    return filterMovies(item);
-  });
-};
-
-ModelCollection.prototype.searchMovie = function(arr) {
-  if (!isButtonSelected(this.arrHeaderButtons)) {
-    arr = allData;
-  }
-  return arr.filter(function(movie) {
-    let userText = ($('#search_string').val()).toLowerCase(),
-    nameMovie = movie.name.toLowerCase(),
-    directorMovie = movie.director.toLowerCase()
+  searchMovie(arr) {
+    let userText = ($('#search_string').val()).toLowerCase()
     ;
-
-    return nameMovie.indexOf(userText) > -1 ||
-    directorMovie.indexOf(userText) > -1;
-  });
-};
-
-ModelCollection.prototype.assembleMovieObj = function(obj) {
-  let movieObj = {
-    name: ['Название', ''],
-    year: ['Год', ''],
-    genre: ['Жанр', ''],
-    director: ['Режиссер', ''],
-    country: ['Страна', ''],
-    duration: ['Продолжительность', ''],
-    linkImage: ''
-  }
-  ;
-  obj['genre'] = transformIdToString(obj['genreId'], 'genre', keys) || '';
-  obj['country'] = transformIdToString(obj['countryId'], 'country', keys) || '';
-
-  for (let prop in movieObj) {
-    if (prop === 'linkImage') {
-      movieObj[prop] = obj[prop] || '';
-    } else {
-      movieObj[prop][1] = obj[prop] || '';
+    if (!helper.isButtonSelected(this.arrHeaderButtons)) {
+      arr = allData;
     }
+    if (userText === '') {
+      arr = [];
+    }
+    return arr.filter(function(movie) {
+      let nameMovie = movie.name.toLowerCase(),
+          directorMovie = movie.director.toLowerCase()
+      ;
+
+      return nameMovie.indexOf(userText) > -1 ||
+          directorMovie.indexOf(userText) > -1;
+    });
   }
 
-  return movieObj;
-};
+  assembleMovieObj(obj) {
+    let movieObj = {
+          name: ['Название', ''],
+          year: ['Год', ''],
+          genre: ['Жанр', ''],
+          director: ['Режиссер', ''],
+          country: ['Страна', ''],
+          duration: ['Продолжительность', ''],
+          linkImage: ''
+        }
+    ;
+    obj['genre'] = helper.transformIdToString(obj['genreId'], 'genre', keys) || '';
+    obj['country'] = helper.transformIdToString(obj['countryId'], 'country', keys) || '';
 
-export default ModelCollection;
+    for (let prop in movieObj) {
+      if (prop === 'linkImage') {
+        movieObj[prop] = obj[prop] || '';
+      } else {
+        movieObj[prop][1] = obj[prop] || '';
+      }
+    }
+
+    return movieObj;
+  }
+}

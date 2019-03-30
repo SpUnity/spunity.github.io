@@ -1,23 +1,26 @@
 import ModelCollection from '../model/app-model';
 import ViewCollection from '../view/app-view';
-import showError from "../helpers/show_error";
+import ServiceCollection from '../service/app-service';
+import HelperCollection from '../helpers/app-helpers';
 
 function appController() {
   let model = new ModelCollection(),
   view = new ViewCollection(),
+  service = new ServiceCollection(),
+  helper = new HelperCollection(),
   filteredArr = []
   ;
 
   try {
-    model.checkData();
+    service.getData(setDataBeforeStart);
   }catch (e) {
-    showError(false);
+    helper.showError(false);
     console.log('Ошибка: '+ e.name +'\n'+ e.message +'\n'+ e.stack);
   }
 
-  $('#list-checkbox').click(function() {
+  function setDataBeforeStart() {
     filteredArr = allData;
-  });
+  }
 
   $('#filter').click(function() {
     try {

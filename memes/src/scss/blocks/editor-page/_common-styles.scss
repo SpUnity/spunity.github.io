@@ -1,0 +1,43 @@
+
+
+.editor-block {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	display: none;
+}
+
+.main_button {
+	@include button_style ($button_back_dark_blue, white);
+}
+
+.editor_text-size {
+	@include size_text_style ($text_dark_grey);
+}
+
+.side-column {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 30%;
+	height: 100%;
+	color: $text_dark_grey;
+	background-color: $background_side;
+
+	&_title {
+		text-align: center;
+		text-decoration: underline;
+	}
+}
+
+.choice-color {
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
+
+	&-option {
+		display: inline-block;
+	}
+}

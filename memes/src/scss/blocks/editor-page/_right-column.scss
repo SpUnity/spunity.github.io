@@ -1,0 +1,26 @@
+.image-field {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	padding: 1rem .3rem;
+	border-bottom: 1px solid $text_dark_grey;
+	font-size: 1.2rem;
+
+	&-example {
+		width: 30%;
+		padding: 1rem 0;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+		&_view {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+	&-size {
+		padding-top: 1rem;
+	}
+}

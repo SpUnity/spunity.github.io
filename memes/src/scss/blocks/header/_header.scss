@@ -1,0 +1,34 @@
+header {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	color: $text_dark_grey;
+	width: 100%;
+	background-color: $background_side;
+	height: 5rem;
+	position: relative;
+}
+
+.navigation {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	height: 2rem;
+	position: absolute;
+	bottom: 0;
+
+	&_button {
+		flex-grow: 1;
+		font-size: 1.2rem;
+		background-color: $vk_dark_blue;
+		color: #fff;
+		border: 2px solid $vk_dark_blue;
+		opacity: .8;
+
+		&:hover {
+			opacity: 1;
+			border: 2px solid #fff;
+		}
+	}
+}

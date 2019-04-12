@@ -1,0 +1,58 @@
+.editor-overlay {
+	display: none;
+	position: fixed;
+	background-color: rgba(0, 0, 0, .7);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+
+	&-close {
+		position: absolute;
+		bottom: 80%;
+		right: 30%;
+		color: #ccc;
+		font-size: 1.2rem;
+		cursor: pointer;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+}
+
+.editor-modal {
+	background-color: #ffffff;
+	width: 40%;
+	height: 60%;
+	position: absolute;
+	top: 20%;
+	left: 30%;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+
+	&-item {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+		&_image {
+			width: 4rem;
+			height: 4rem;
+			border-radius: 50%;
+		}
+		&_caption {
+			color: $text_dark_grey;
+			font-size: 1.2rem;
+			font-weight: bold;
+		}
+		&_button {
+			@include button_style ($vk_dark_blue, #fff) {
+				padding: .3rem;
+			}
+		}
+	}
+}

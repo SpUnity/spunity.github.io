@@ -1,9 +1,9 @@
 class AppHelper {
-    constructor() {}
+	constructor() {}
 
-    checkEventTarget(elem, nodeName) {
-        return elem.prop('tagName') !== nodeName;
-    }
+	checkEventTarget(elem, nodeName) {
+		return elem.prop('tagName') !== nodeName;
+	}
 }
 
 export default AppHelper;

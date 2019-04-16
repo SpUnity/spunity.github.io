@@ -5,7 +5,7 @@
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
-	display: none;
+	overflow: hidden;
 }
 
 .main_button {
@@ -25,6 +25,7 @@
 	height: 100%;
 	color: $text_dark_grey;
 	background-color: $background_side;
+	transition: all .7s ease-in-out;
 
 	&_title {
 		text-align: center;

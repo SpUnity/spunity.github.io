@@ -6,6 +6,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	transition: all .7s ease-in-out;
 
 	&-container {
 		position: relative;
@@ -18,7 +19,6 @@
 			width: 100%;
 			top: 30%;
 			bottom: 30%;
-			background-color: #ffffff;
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
@@ -30,7 +30,7 @@
 		text-align: center;
 		position: absolute;
 		color: #fff;
-		font-size: 2rem;
+		font-size: 40px;
 		font-weight: bold;
 	}
 	&_users-text-top {
@@ -43,5 +43,18 @@
 		display: inline-block;
 		margin-top: 2rem;
 		padding: .7rem;
+	}
+	&_light {
+		display: none;
+		width: 80px;
+		height: 80px;
+	}
+	&_dark {
+		width: 80px;
+		height: 80px;
+	}
+	&-visual-effect {
+		display: none;
+		position: absolute;
 	}
 }

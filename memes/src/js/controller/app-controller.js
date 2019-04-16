@@ -4,34 +4,39 @@ import AppModel from '../model/app-model';
 import AppHelper from '../helpers/app-helper';
 
 function AppController() {
-    const service = new AppService(),
-        view = new AppView(),
-        model = new AppModel(),
-        helper = new AppHelper(),
-        friendsData = service.getFriendsListData();
+	const service = new AppService(),
+		view = new AppView(),
+		model = new AppModel(),
+		helper = new AppHelper(),
+		friendsData = service.getFriendsListData();
 
-    view.showFriendsList(friendsData);
+	view.showFriendsList(friendsData);
 	view.renderPage();
+	view.doBlocksDraggable();
 
-    $('#friends_list').click(function(event) {
+	$('#friends_list').click(function(event) {
 		const $targetElem = $(event.target);
 
-		if (helper.checkEventTarget($targetElem, 'BUTTON')) {return}
+		if (helper.checkEventTarget($targetElem, 'BUTTON')) {
+			return
+		}
 
 		let vkDataPhoto = [],
-            transformedDataPhoto = [];
+			transformedDataPhoto = [];
 
-        vkDataPhoto = service.getFriendPhotos($targetElem.data('id'));
-        transformedDataPhoto = model.transformArrayPhotos(vkDataPhoto);
-        view.showPhotoList(transformedDataPhoto);
+		vkDataPhoto = service.getFriendPhotos($targetElem.data('id'));
+		transformedDataPhoto = model.transformArrayPhotos(vkDataPhoto);
+		view.showPhotoList(transformedDataPhoto);
 
 		view.reloadPage(['photo', 'to_friend_list'], ['friends_list']);
-    });
+	});
 
 	$('#photo').click(function(event) {
 		const $targetElem = $(event.target);
 
-		if (helper.checkEventTarget($targetElem, 'IMG')) {return}
+		if (helper.checkEventTarget($targetElem, 'IMG')) {
+			return
+		}
 
 		view.showEditPage($targetElem.attr('src'));
 
@@ -42,6 +47,38 @@ function AppController() {
 		view.reloadPage(['friends_list'], ['edit_page', 'photo', 'to_friend_list', 'to_photo_list', 'hide_side_bars']);
 		view.removePhotos();
 	});
+
+	$('#to_photo_list').click(function(event) {
+		view.reloadPage(['photo'], ['edit_page', 'to_photo_list', 'hide_side_bars']);
+	});
+
+	$('#hide_side_bars').click(function() {
+		view.ruleSideBars();
+	});
+
+	$('#edit_page').click(function(event) {
+		let stringCodes = $(event.target).data().code,
+			changingData;
+
+		if (!stringCodes) {
+			return;
+		}
+
+		changingData = model.transformDataCode(stringCodes);
+		view.changeElem(changingData);
+	});
+
+	$(`#user_text_top_field`).on('input', function(event) {
+		let userText = $(this).val(),
+			$elemForInsert = $(`#center_text_top`);
+		view.insertText(userText, $elemForInsert);
+	})
+
+	$(`#user_text_bottom_field`).on('input', function(event) {
+		let userText = $(this).val(),
+			$elemForInsert = $(`#center_text_bottom`);
+		view.insertText(userText, $elemForInsert);
+	})
 }
 
 export default AppController;

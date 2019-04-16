@@ -7,6 +7,7 @@ header {
 	background-color: $background_side;
 	height: 5rem;
 	position: relative;
+	border-bottom: 2px solid #fff;
 }
 
 .navigation {
@@ -25,6 +26,7 @@ header {
 		color: #fff;
 		border: 2px solid $vk_dark_blue;
 		opacity: .8;
+		justify-content: center;
 
 		&:hover {
 			opacity: 1;

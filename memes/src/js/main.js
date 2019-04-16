@@ -1,7 +1,9 @@
 'use strict';
 
-
-
+import AppController from './controller/app-controller';
 import '../scss/main.scss';
 
-let a = 26;
+
+$(function () {
+	AppController();
+})

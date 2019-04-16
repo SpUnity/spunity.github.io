@@ -7,7 +7,6 @@
 	align-items: center;
 	background-color: $background_side;
 	padding: 1rem 0;
-	display: none;
 
 	&-item {
 		width: 80%;
@@ -17,6 +16,7 @@
 		align-items: center;
 		border-radius: 1rem;
 		padding: .5rem 0;
+		margin-bottom: 1rem;
 
 		&_photo {
 			width: 4rem;

@@ -14,11 +14,11 @@
 <body>
 
 	<header>
-		<h1>Создание Мема</h1>
+		<h1 id="header_title">Список Ваших друзей</h1>
 		<nav class="navigation">
-			<button class="navigation_button" type="button">К списку друзей</button>
-			<button class="navigation_button" type="button">К списку фото</button>
-			<button class="navigation_button" type="button">Скрыть сайдбары</button>
+			<button class="navigation_button" id="to_friend_list" type="button">К списку друзей</button>
+			<button class="navigation_button" id="to_photo_list" type="button">К списку фото</button>
+			<button class="navigation_button" id="hide_side_bars" type="button">Скрыть сайдбары</button>
 		</nav>
 	</header>
 
@@ -30,51 +30,15 @@
 			</div>
 		</div>
 
-		<div class="photo">
-			<ul class="photo-column">
-				<li class="photo-column-item">
-					<img class="photo-column-item_image" src="./_unpublic/Tottenham - 001.jpg" alt="">
-				</li>
-				<li class="photo-column-item">
-					<img class="photo-column-item_image" src="./_unpublic/Tottenham - 002.jpg" alt="">
-				</li>
-				<li class="photo-column-item">
-					<img class="photo-column-item_image" src="./_unpublic/Tottenham - 003.jpg" alt="">
-				</li>
-			</ul>
-			<ul class="photo-column">
-				<li class="photo-column-item">
-					<img class="photo-column-item_image" src="./_unpublic/Tottenham - 004.jpg" alt="">
-				</li>
-				<li class="photo-column-item">
-					<img class="photo-column-item_image" src="./_unpublic/Tottenham - 005.jpg" alt="">
-				</li>
-				<li class="photo-column-item">
-					<img class="photo-column-item_image" src="./_unpublic/Tottenham - 006.jpg" alt="">
-				</li>
-			</ul>
-			<ul class="photo-column">
-				<li class="photo-column-item">
-					<img class="photo-column-item_image" src="./_unpublic/Tottenham - 007.jpg" alt="">
-				</li>
-				<li class="photo-column-item">
-					<img class="photo-column-item_image" src="./_unpublic/Tottenham - 008.jpg" alt="">
-				</li>
-				<li class="photo-column-item">
-					<img class="photo-column-item_image" src="./_unpublic/Tottenham - 009.jpg" alt="">
-				</li>
-			</ul>
+		<ul class="friends" id="friends_list"></ul>
+
+		<div class="photo" id="photo">
+			<ul class="photo-column" id="photo_left"></ul>
+			<ul class="photo-column" id="photo_center"></ul>
+			<ul class="photo-column" id="photo_right"></ul>
 		</div>
 
-		<ul class="friends">
-			<li class="friends-item">
-				<img class="friends-item_photo" src="./_unpublic/selfie.jpg" alt="selfie">
-				<span class="friends-item_name">Liza Lizunova</span>
-				<button class="friends-item_button" type="button">Выбрать фото</button>
-			</li>
-		</ul>
-
-		<div class="editor-block">
+		<div class="editor-block" id="edit_page">
 			<div class="side-column">
 				<h2 class="side-column_title">Зона для текста</h2>
 
@@ -127,7 +91,7 @@
 						<img class="image-field-example_view" src="./_unpublic/mous.jpg" alt="moustache">
 					</div>
 					<p class="center-column_users-text-top">hhhhhhlllllla</p>
-					<img class="center-column-container_image" src="https://yli.ink/eZjWXl" alt="Poker">
+					<img class="center-column-container_image" id="editing_photo" src="https://yli.ink/eZjWXl" alt="Poker">
 					<p class="center-column_users-text-bottom">hhhhhhllllllaaaaaa</p>
 				</div>
 				<button class="main_button center-column_button" type="button">Отправить</button>

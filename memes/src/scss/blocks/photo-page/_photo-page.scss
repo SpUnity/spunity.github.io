@@ -1,13 +1,14 @@
 .photo {
 	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: flex-start;
 	display: none;
+	justify-content: space-around;
+	align-items: stretch;
 
 	&-column {
 		width: calc(100% / 3);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 
 		&-item {
 			width: 100%;

@@ -3,18 +3,28 @@ import AppView from '../view/app-view';
 import AppModel from '../model/app-model';
 import AppHelper from '../helpers/app-helper';
 
-function AppController() {
+async function AppController() {
 	const service = new AppService(),
 		view = new AppView(),
 		model = new AppModel(),
-		helper = new AppHelper(),
-		friendsData = service.getFriendsListData();
+		helper = new AppHelper();
+		let friendsData = [];
 
-	view.showFriendsList(friendsData);
-	view.renderPage();
+	if (helper.isTokenInUrl()) {
+		helper.setTokenData();
+		friendsData = await service.getFriendsListData();
+		view.showFriendsList(friendsData);
+		view.reloadPage(['friends_list'], []);
+	} else {
+		let visiblePage = helper.getFirstPage();
+		friendsData = await service.getFriendsListData();
+		view.showFriendsList(friendsData);
+		view.reloadPage(visiblePage, []);
+	}
+
 	view.doBlocksDraggable();
 
-	$('#friends_list').click(function(event) {
+	$('#friends_list').click(async function(event) {
 		const $targetElem = $(event.target);
 
 		if (helper.checkEventTarget($targetElem, 'BUTTON')) {
@@ -24,7 +34,7 @@ function AppController() {
 		let vkDataPhoto = [],
 			transformedDataPhoto = [];
 
-		vkDataPhoto = service.getFriendPhotos($targetElem.data('id'));
+		vkDataPhoto = await service.getFriendPhotos($targetElem.data('id'));
 		transformedDataPhoto = model.transformArrayPhotos(vkDataPhoto);
 		view.showPhotoList(transformedDataPhoto);
 
@@ -48,7 +58,7 @@ function AppController() {
 		view.removePhotos();
 	});
 
-	$('#to_photo_list').click(function(event) {
+	$('#to_photo_list').click(function() {
 		view.reloadPage(['photo'], ['edit_page', 'to_photo_list', 'hide_side_bars']);
 	});
 
@@ -68,17 +78,22 @@ function AppController() {
 		view.changeElem(changingData);
 	});
 
-	$(`#user_text_top_field`).on('input', function(event) {
+	$(`#user_text_top_field`).on('input', function() {
 		let userText = $(this).val(),
 			$elemForInsert = $(`#center_text_top`);
 		view.insertText(userText, $elemForInsert);
 	})
 
-	$(`#user_text_bottom_field`).on('input', function(event) {
+	$(`#user_text_bottom_field`).on('input', function() {
 		let userText = $(this).val(),
 			$elemForInsert = $(`#center_text_bottom`);
 		view.insertText(userText, $elemForInsert);
 	})
+
+	$( `#create_meme` ).click(function() {
+		helper.getImage();
+	});
 }
+
 
 export default AppController;

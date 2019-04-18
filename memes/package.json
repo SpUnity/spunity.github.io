@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.3.4",
+    "@babel/polyfill": "^7.4.3",
     "@babel/preset-env": "^7.4.2",
     "babel-loader": "^8.0.5",
     "babel-preset-env": "^1.7.0",
@@ -29,7 +30,10 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
+    "html2canvas": "^1.0.0-rc.1",
+    "jcanvas": "^21.0.1",
     "jquery": "^3.3.1",
-    "jquery-ui": "^1.12.1"
+    "jquery-ui": "^1.12.1",
+    "js-cookie": "^2.2.0"
   }
 }

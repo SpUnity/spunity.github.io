@@ -6,7 +6,8 @@ class AppView {
 			to_friend_list: false,
 			to_photo_list: false,
 			hide_side_bars: false,
-			friends_list: true,
+			authorization: false,
+			friends_list: false,
 			photo: false,
 			edit_page: false
 		};
@@ -46,6 +47,7 @@ class AppView {
 				}).appendTo('#friends_list'),
 				nameClass = 'friends-item_',
 				btn;
+
 			$('<img>', {
 				class: `${nameClass}photo`,
 				src: `${item.photo_100}`,
@@ -60,6 +62,7 @@ class AppView {
 				text: 'Выбрать фото',
 				type: 'button'
 			}).appendTo(li);
+
 			btn.data('id', `${item.id}`);
 		})
 	}
@@ -106,6 +109,9 @@ class AppView {
 				break;
 			case obj['edit_page']:
 				value = 'Создание мема';
+				break;
+			case obj['authorization']:
+				value = 'Добро Пожаловать';
 				break;
 		}
 

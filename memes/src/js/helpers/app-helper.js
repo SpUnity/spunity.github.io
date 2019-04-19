@@ -24,8 +24,8 @@ class AppHelper {
 		arrUsefullData = usefullData.split('&'),
 		arrToken = arrUsefullData[0].split('='),
 		arrExpire = arrUsefullData[1].split('='),
-		now = new Date(),
-		expireTime = +arrExpire[1] + +now
+		now = new Date().getTime(),
+		expireTime = +arrExpire[1] + now
 		;
 
 		Cookies.set(arrToken[0], arrToken[1]);
@@ -46,10 +46,10 @@ class AppHelper {
 
 function isTokenAlive() {
 	let endTimeToken = +Cookies.get('expires_in'),
-	now = new Date()
+	now = new Date().getTime()
 	;
 
-	return endTimeToken > +now;
+	return endTimeToken > now;
 }
 
 

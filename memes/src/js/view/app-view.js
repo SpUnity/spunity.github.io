@@ -73,10 +73,9 @@ class AppView {
 		let liClass = 'photo-column-item',
 			firstPartId = '#photo_',
 			arrDivs = [$(`${firstPartId}left`), $(`${firstPartId}center`), $(`${firstPartId}right`)],
-			counter = 0,
-			photosData = photos.response.items
+			counter = 0
 			;
-		photosData.response.forEach((photo) => {
+		photos.forEach((photo) => {
 			let parent = arrDivs[counter],
 				li = $('<li>', {
 					class: liClass

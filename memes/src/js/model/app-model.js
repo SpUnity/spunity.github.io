@@ -18,10 +18,11 @@ class AppModel {
 	}
 
 	transformArrayPhotos(vkData) {
-		let transfromedData = vkData.map((item) => {
+		let vkDataArr = vkData.response.items,
+		transfromedData = vkDataArr.map((item) => {
 			return item.photo_604;
 		})
-
+		;
 		return transfromedData;
 	}
 

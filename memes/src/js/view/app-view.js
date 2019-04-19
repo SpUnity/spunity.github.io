@@ -41,7 +41,7 @@ class AppView {
 	}
 
 	showFriendsList(data) {
-		data.forEach((item) => {
+		data.response.forEach((item) => {
 			let li = $('<li>', {
 					class: 'friends-item'
 				}).appendTo('#friends_list'),

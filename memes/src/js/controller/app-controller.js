@@ -12,13 +12,11 @@ async function AppController() {
 
 	if (helper.isTokenInUrl()) {
 		helper.setTokenData();
-		friendsData = await service.getFriendsListData();
-		view.showFriendsList(friendsData);
+		await createFriendsList();
 		view.reloadPage(['friends_list'], []);
 	} else {
-		let visiblePage = helper.getFirstPage();
-		friendsData = await service.getFriendsListData();
-		view.showFriendsList(friendsData);
+		let visiblePage = await helper.getFirstPage();
+		await createFriendsList(visiblePage);
 		view.reloadPage(visiblePage, []);
 	}
 
@@ -93,6 +91,15 @@ async function AppController() {
 	$( `#create_meme` ).click(function() {
 		helper.getImage();
 	});
+
+	async function createFriendsList(argument) {
+		if (!!argument && argument[0] === 'authorization') {
+			return;
+		}
+
+		friendsData = await service.getFriendsListData();
+		view.showFriendsList(friendsData);
+	}
 }
 
 

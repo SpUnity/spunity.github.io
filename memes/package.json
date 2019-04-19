@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack --watch --mode development",
-    "serve": "webpack-dev-server --hotOnly"
+    "serve": "webpack-dev-server --hotOnly -d"
   },
   "author": "spursunity",
   "license": "ISC",
@@ -24,6 +24,7 @@
     "node-sass": "^4.11.0",
     "path": "^0.12.7",
     "sass-loader": "^7.1.0",
+    "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
@@ -31,7 +32,6 @@
   },
   "dependencies": {
     "html2canvas": "^1.0.0-rc.1",
-    "jcanvas": "^21.0.1",
     "jquery": "^3.3.1",
     "jquery-ui": "^1.12.1",
     "js-cookie": "^2.2.0"

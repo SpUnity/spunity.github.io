@@ -1,9 +1,7 @@
 import Cookies from 'js-cookie';
 
 class AppService {
-	constructor() {
-		this.canvas = 'hhh';
-	}
+	constructor() {}
 
 	getFriendsListData() {
 		let token = Cookies.get('access_token');

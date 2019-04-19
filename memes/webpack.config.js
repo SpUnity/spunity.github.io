@@ -1,7 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: './src/js/main.js',
@@ -9,6 +9,7 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js'
 	},
+	devtool: 'inline-source-map',
 	devServer: {
 		contentBase: path.join(__dirname),
 		compress: true,
@@ -21,20 +22,25 @@ module.exports = {
 	},
 	module: {
 		rules: [{
-				test: /\.scss$/,
-				use: [
-					'style-loader',
-					MiniCssExtractPlugin.loader,
-					'css-loader',
-					'sass-loader'
+					test: /\.scss$/,
+					use: [
+						'style-loader',
+						MiniCssExtractPlugin.loader,
+						'css-loader',
+						'sass-loader'
+					]
+					},
+					{
+						test: /\.js$/,
+						use: ["source-map-loader"],
+						enforce: "pre"
+					},
+					{
+						test: /\.js$/,
+						loader: 'babel-loader',
+						exclude: '/node_modules/'
+					}
 				]
-			},
-			{
-				test: /\.js$/,
-				loader: 'babel-loader',
-				exclude: '/node_modules/'
-			}
-		]
 	},
 	plugins: [
 		new MiniCssExtractPlugin({

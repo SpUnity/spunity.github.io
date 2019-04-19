@@ -18,12 +18,9 @@ class AppModel {
 	}
 
 	transformArrayPhotos(vkData) {
-		let vkDataArr = vkData.response.items,
-		transfromedData = vkDataArr.map((item) => {
+		return vkData.map((item) => {
 			return item.photo_604;
-		})
-		;
-		return transfromedData;
+		});
 	}
 
 	transformDataCode(str) {

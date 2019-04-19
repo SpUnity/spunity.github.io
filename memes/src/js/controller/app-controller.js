@@ -97,8 +97,8 @@ async function AppController() {
 			return;
 		}
 
-		friendsData = await service.getFriendsListData(view.reloadPage);
-		view.showFriendsList(friendsData);
+		friendsData = await service.getFriendsListData();
+		friendsData ? view.showFriendsList(friendsData) : view.reloadPage(['authorization'], []);
 	}
 }
 

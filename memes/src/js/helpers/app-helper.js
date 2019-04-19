@@ -36,7 +36,7 @@ class AppHelper {
 		$( `#download_meme` ).css('visibility', 'hidden');
 
 		let canvas = await html2canvas(document.querySelector( '#canvas_image' )),
-		canvasImage = canvas.toDataURL("image/png");
+		canvasImage = canvas.toDataURL("image/jpeg", 1.0);
 
 		$( `#download_meme` ).attr('href', canvasImage);
 		$( `#download_meme` ).attr('download', 'Your_meme');

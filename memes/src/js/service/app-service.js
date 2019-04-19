@@ -12,7 +12,7 @@ class AppService {
 		})
 		.done(function(data) {
 			if (data.error) {
-				console.log(err);
+				console.log(data.error);
 				authorizationCallback(['authorization'], []);
 				return { response: { items: [] } };
 			}

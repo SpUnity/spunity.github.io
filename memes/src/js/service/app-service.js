@@ -11,7 +11,7 @@ class AppService {
 			dataType: 'JSONP'
 		})
 		.done(function(data) {
-			return data.response.items || false;
+			return data.response ? data.response.items : false;
 		})
 	}
 

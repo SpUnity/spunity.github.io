@@ -8,8 +8,16 @@ class AppService {
 		return $.ajax({
 			url: `https://api.vk.com/method/friends.get?fields=photo_100&access_token=${token}&v=5.52`,
 			type: 'GET',
-			dataType: 'JSONP'
-		})
+			dataType: 'JSONP',
+			success(data) {
+				return data.response.items;
+			},
+			error(err) {
+				console.log(err);
+				authorizationCallback(['authorization'], []);
+				return { response: { items: [] } };
+			}
+		})/*
 		.done(function(data) {
 			return data.response.items;
 		})
@@ -17,7 +25,7 @@ class AppService {
 			console.log(err);
 			authorizationCallback(['authorization'], []);
 			return { response: { items: [] } };
-		})
+		})*/
 	}
 
 	getFriendPhotos( userId ) {

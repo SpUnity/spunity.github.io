@@ -3,16 +3,14 @@ import Cookies from 'js-cookie';
 class AppService {
 	constructor() {}
 
-	getFriendsListData() {
-		let token = Cookies.get('access_token');
-		return $.ajax({
+	async getFriendsListData() {
+		let token = Cookies.get('access_token'),
+		data = await $.ajax({
 			url: `https://api.vk.com/method/friends.get?fields=photo_100&access_token=${token}&v=5.52`,
 			type: 'GET',
 			dataType: 'JSONP'
-		})
-		.done(function(data) {
-			return data.response ? data.response.items : false;
-		})
+		});
+		return data.response ? data.response.items : false;
 	}
 
 	getFriendPhotos( userId ) {

@@ -41,7 +41,9 @@ class AppView {
 	}
 
 	showFriendsList(data) {
-		data.response.forEach((item) => {
+		const friends = data.response.items;
+
+		friends.forEach((item) => {
 			let li = $('<li>', {
 					class: 'friends-item'
 				}).appendTo('#friends_list'),
@@ -71,8 +73,10 @@ class AppView {
 		let liClass = 'photo-column-item',
 			firstPartId = '#photo_',
 			arrDivs = [$(`${firstPartId}left`), $(`${firstPartId}center`), $(`${firstPartId}right`)],
-			counter = 0;
-		photos.forEach((photo) => {
+			counter = 0,
+			photosData = photos.response.items
+			;
+		photosData.response.forEach((photo) => {
 			let parent = arrDivs[counter],
 				li = $('<li>', {
 					class: liClass

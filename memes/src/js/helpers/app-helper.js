@@ -25,7 +25,7 @@ class AppHelper {
 		arrToken = arrUsefullData[0].split('='),
 		arrExpire = arrUsefullData[1].split('='),
 		now = new Date().getTime(),
-		expireTime = +arrExpire[1] + now
+		expireTime = ((+arrExpire[1]) * 1000) + now
 		;
 
 		Cookies.set(arrToken[0], arrToken[1]);

@@ -33,6 +33,10 @@ async function AppController() {
 			transformedDataPhoto = [];
 
 		vkDataPhoto = await service.getFriendPhotos($targetElem.data('id'));
+		if (!vkDataPhoto) {
+			view.reloadPage(['authorization'], ['friends_list']);
+			return;
+		}
 		transformedDataPhoto = model.transformArrayPhotos(vkDataPhoto);
 		view.showPhotoList(transformedDataPhoto);
 

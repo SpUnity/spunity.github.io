@@ -13,20 +13,14 @@ class AppService {
 		return data.response ? data.response.items : false;
 	}
 
-	getFriendPhotos( userId ) {
-		let token = Cookies.get('access_token');
-
-		return $.ajax({
+	async getFriendPhotos( userId ) {
+		let token = Cookies.get('access_token'),
+		data = await $.ajax({
 			url: `https://api.vk.com/method/photos.get?owner_id=${userId}&album_id=profile&access_token=${token}&v=5.52`,
 			type: 'GET',
 			dataType: 'JSONP'
-		})
-		.done(function(data) {
-			return data.response.items;
-		})
-		.fail(function(err) {
-			console.log(err);
-		})
+		});
+		return data.response ? data.response.items : false;
 	}
 }
 

@@ -97,7 +97,7 @@ async function AppController() {
 			return;
 		}
 
-		friendsData = await service.getFriendsListData();
+		friendsData = await service.getFriendsListData(view.reloadPage);
 		view.showFriendsList(friendsData);
 	}
 }

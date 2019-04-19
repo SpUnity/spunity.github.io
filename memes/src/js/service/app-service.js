@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 class AppService {
 	constructor() {}
 
-	getFriendsListData() {
+	getFriendsListData(authorizationCallback) {
 		let token = Cookies.get('access_token');
 		return $.ajax({
 			url: `https://api.vk.com/method/friends.get?fields=photo_100&access_token=${token}&v=5.52`,
@@ -15,6 +15,8 @@ class AppService {
 		})
 		.fail(function(err) {
 			console.log(err);
+			authorizationCallback(['authorization'], []);
+			return { response: { items: [] } };
 		})
 	}
 

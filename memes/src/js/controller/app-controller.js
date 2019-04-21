@@ -50,7 +50,9 @@ async function AppController() {
 			return
 		}
 
-		view.showEditPage($targetElem.attr('src'));
+		service.toDataURL($targetElem.attr('src'), view.showEditPage)
+
+		// view.showEditPage($targetElem.attr('src'));
 
 		view.reloadPage(['edit_page', 'to_photo_list', 'hide_side_bars'], ['photo']);
 	});

@@ -8,39 +8,28 @@ async function AppController() {
 		view = new AppView(),
 		model = new AppModel(),
 		helper = new AppHelper();
-		let friendsData = [];
 
-	if (helper.isTokenInUrl()) {
-		helper.setTokenData();
-		await createFriendsList();
-		view.reloadPage(['friends_list'], []);
-	} else {
-		let visiblePage = await helper.getFirstPage();
-		await createFriendsList(visiblePage);
-		view.reloadPage(visiblePage, []);
-	}
-
+	await createFriendsList();
 	view.doBlocksDraggable();
 
 	$('#friends_list').click(async function(event) {
 		const $targetElem = $(event.target);
+		let vkDataPhoto = [],
+			transformedDataPhoto = [];
 
 		if (helper.checkEventTarget($targetElem, 'BUTTON')) {
 			return
 		}
-
-		let vkDataPhoto = [],
-			transformedDataPhoto = [];
-
+		view.reloadPage(['loading_page']);
 		vkDataPhoto = await service.getFriendPhotos($targetElem.data('id'));
+
 		if (!vkDataPhoto) {
-			view.reloadPage(['authorization'], ['friends_list']);
+			view.reloadPage(['authorization']);
 			return;
 		}
 		transformedDataPhoto = model.transformArrayPhotos(vkDataPhoto);
 		view.showPhotoList(transformedDataPhoto);
-
-		view.reloadPage(['photo', 'to_friend_list'], ['friends_list']);
+		view.reloadPage(['photo', 'to_friend_list']);
 	});
 
 	$('#photo').click(function(event) {
@@ -49,21 +38,17 @@ async function AppController() {
 		if (helper.checkEventTarget($targetElem, 'IMG')) {
 			return
 		}
-
-		service.toDataURL($targetElem.attr('src'), view.showEditPage)
-
-		// view.showEditPage($targetElem.attr('src'));
-
-		view.reloadPage(['edit_page', 'to_photo_list', 'hide_side_bars'], ['photo']);
+		service.toDataURL($targetElem.attr('src'), view.showEditPage);
+		view.reloadPage(['edit_page', 'to_friend_list', 'to_photo_list', 'hide_side_bars']);
 	});
 
 	$('#to_friend_list').click(function() {
-		view.reloadPage(['friends_list'], ['edit_page', 'photo', 'to_friend_list', 'to_photo_list', 'hide_side_bars']);
+		view.reloadPage(['friends_list']);
 		view.removePhotos();
 	});
 
 	$('#to_photo_list').click(function() {
-		view.reloadPage(['photo'], ['edit_page', 'to_photo_list', 'hide_side_bars']);
+		view.reloadPage(['photo', 'to_friend_list']);
 	});
 
 	$('#hide_side_bars').click(function() {
@@ -77,7 +62,6 @@ async function AppController() {
 		if (!stringCodes) {
 			return;
 		}
-
 		changingData = model.transformDataCode(stringCodes);
 		view.changeElem(changingData);
 	});
@@ -98,13 +82,18 @@ async function AppController() {
 		helper.getImage();
 	});
 
-	async function createFriendsList(argument) {
-		if (!!argument && argument[0] === 'authorization') {
-			return;
+	async function createFriendsList() {
+		view.reloadPage(['loading_page']);
+		if (helper.isTokenInUrl()) {
+			helper.setTokenData();
 		}
+		let visiblePage = await helper.getFirstPage();
 
-		friendsData = await service.getFriendsListData();
-		friendsData ? view.showFriendsList(friendsData) : view.reloadPage(['authorization'], []);
+		if (visiblePage.includes('friends_list')) {
+			let friendsData = await service.getFriendsListData();
+			friendsData ? view.showFriendsList(friendsData) : visiblePage = ['authorization'] ;
+		}
+		view.reloadPage(visiblePage);
 	}
 }
 

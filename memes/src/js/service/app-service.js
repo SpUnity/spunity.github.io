@@ -32,7 +32,6 @@ class AppService {
 			reader.onloadend = function() {
 				callback(reader.result);
 			};
-
 			reader.readAsDataURL(xhr.response);
 		};
 

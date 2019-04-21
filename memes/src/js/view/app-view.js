@@ -9,7 +9,8 @@ class AppView {
 			authorization: false,
 			friends_list: false,
 			photo: false,
-			edit_page: false
+			edit_page: false,
+			loading_page: false
 		};
 		this.showingSideBars = {
 			switch: true,
@@ -18,23 +19,20 @@ class AppView {
 		};
 	}
 
-	reloadPage(elemsOn, elemsOff) {
-		elemsOn.forEach((key) => {
-			this.keysObj[key] = true
-		});
-		elemsOff.forEach((key) => {
-			this.keysObj[key] = false
-		})
+	reloadPage(elemsOn) {
+		const objPages = {...this.keysObj};
+
+		for (let key in objPages) {
+			objPages[key] = elemsOn.includes(key);
+		}
 
 		this.changeHeaderText();
-		this.renderPage();
+		this.renderPage(objPages);
 	}
 
-	renderPage() {
-		let obj = this.keysObj;
-
-		for (let key in obj) {
-			let value = obj[key] ? 'flex' : 'none';
+	renderPage(objPages) {
+		for (let key in objPages) {
+			let value = objPages[key] ? 'flex' : 'none';
 
 			$(`#${key}`).css('display', value);
 		}

@@ -14,7 +14,7 @@
 <body>
 
 	<header>
-		<h1 id="header_title">Добро Пожаловать</h1>
+		<h1 id="header_title"></h1>
 		<nav class="navigation">
 			<button class="navigation_button" id="to_friend_list" type="button">К списку друзей</button>
 			<button class="navigation_button" id="to_photo_list" type="button">К списку фото</button>
@@ -23,6 +23,10 @@
 	</header>
 
 	<main>
+		<div id="loading_page">
+			<div class="lds-hourglass"></div>
+		</div>
+
 		<div class="authorization" id="authorization">
 			<img class="authorization_logo" src="./images/logo.png" alt="Logo">
 			<div class="authorization-link-block">

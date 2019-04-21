@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import html2canvas from 'html2canvas';
+import 'jquery-easy-loading';
 
 class AppHelper {
 	constructor() {}

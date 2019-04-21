@@ -15,7 +15,7 @@ module.exports = {
 		compress: true,
 		port: 9000,
 		hot: true,
-		open: true,
+		//open: true,
 		overlay: true,
 		publicPath: '/dist/',
 		watchContentBase: true

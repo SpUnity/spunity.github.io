@@ -5,7 +5,7 @@ header {
 	color: $text_dark_grey;
 	width: 100%;
 	background-color: $background_side;
-	height: 5rem;
+	padding-bottom: 2.5rem;
 	position: relative;
 	border-bottom: 2px solid #fff;
 }
@@ -33,4 +33,8 @@ header {
 			border: 2px solid #fff;
 		}
 	}
+}
+
+#header_title {
+	text-align: center;
 }

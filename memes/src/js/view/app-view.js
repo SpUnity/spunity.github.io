@@ -26,7 +26,7 @@ class AppView {
 			objPages[key] = elemsOn.includes(key);
 		}
 
-		this.changeHeaderText();
+		this.changeHeaderText(objPages);
 		this.renderPage(objPages);
 	}
 
@@ -94,22 +94,21 @@ class AppView {
 		$('#photo li').remove();
 	}
 
-	changeHeaderText() {
+	changeHeaderText(objPages) {
 		const $title = $('#header_title');
-		let obj = this.keysObj,
-			value = '';
+		let value = '';
 
 		switch (true) {
-			case obj['friends_list']:
+			case objPages['friends_list']:
 				value = 'Список Ваших друзей';
 				break;
-			case obj['photo']:
+			case objPages['photo']:
 				value = 'Список Фото Вашего друга';
 				break;
-			case obj['edit_page']:
+			case objPages['edit_page']:
 				value = 'Создание мема';
 				break;
-			case obj['authorization']:
+			case objPages['authorization']:
 				value = 'Добро Пожаловать';
 				break;
 		}

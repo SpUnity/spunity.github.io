@@ -1,0 +1,30 @@
+@media screen
+  and (max-width: 650px) {
+	.friends-item {
+		flex-direction: column;
+
+		&_name {
+			margin: 1rem 0;
+		}
+	}
+
+	.photo {
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+
+		&-column {
+			width: 50%;
+		}
+	}
+
+	.editor-block {
+		flex-direction: column;
+		overflow: visible;
+	}
+
+	.side-column, .center-column {
+		width: 100%;
+		padding: 1rem 0;
+	}
+}

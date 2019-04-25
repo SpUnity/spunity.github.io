@@ -1,4 +1,4 @@
-class AppModel {
+class EditorModel {
   constructor() {
     this.editorHandlerCodes = {
       textTop: ['side_text_top', 'center_text_top'],
@@ -17,10 +17,6 @@ class AppModel {
     };
   }
 
-  transformArrayPhotos(vkData) {
-    return vkData.map(item => item.photo_604);
-  }
-
   transformDataCode(str) {
     const arrCodes = str.split('-');
     const arrId = this.editorHandlerCodes[arrCodes[0]];
@@ -33,4 +29,4 @@ class AppModel {
   }
 }
 
-export default AppModel;
+export default EditorModel;

@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-class AppService {
+class StartPageService {
   constructor() {}
 
   async getFriendsListData() {
@@ -22,24 +22,7 @@ class AppService {
     });
     return data.response ? data.response.items : false;
   }
-
-  toDataURL(url, callback) {
-    const xhr = new XMLHttpRequest();
-
-    xhr.onload = () => {
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        callback(reader.result);
-      };
-      reader.readAsDataURL(xhr.response);
-    };
-
-    xhr.open('GET', url);
-    xhr.responseType = 'blob';
-    xhr.send();
-  }
 }
 
 
-export default AppService;
+export default StartPageService;

@@ -1,6 +1,6 @@
 import 'jquery-ui/ui/widgets/draggable';
 
-class AppView {
+class EditorView {
   constructor() {
     this.keysObj = {
       to_friend_list: false,
@@ -24,7 +24,6 @@ class AppView {
     ];
     this.displayFlex = 'flex';
     this.displayNone = 'none';
-    this.friendsListId = 'friends_list';
   }
 
   reloadPage(...elemsOn) {
@@ -53,59 +52,6 @@ class AppView {
         $(`#${key}`).css('display', valueDisplay);
       }
     }
-  }
-
-  showFriendsList(data) {
-    const friendsListPageId = this.friendsListId;
-    const itemClassName = 'friends-item';
-
-    data.forEach((item) => {
-      const li = $('<li>', { class: `${itemClassName}` }).appendTo(`#${friendsListPageId}`);
-
-      $('<img>', {
-        class: `${itemClassName}_photo`,
-        src: `${item.photo_100}`,
-        alt: 'selfie',
-      }).appendTo(li);
-
-      $('<span>', {
-        class: `${itemClassName}_name`,
-        text: `${item.first_name} ${item.last_name}`,
-      }).appendTo(li);
-
-      const btn = $('<button>', {
-        class: `${itemClassName}_button`,
-        text: 'Выбрать фото',
-        type: 'button',
-      }).appendTo(li);
-
-      btn.data('id', `${item.id}`);
-    });
-  }
-
-  showPhotoList(photos) {
-    const liClass = 'photo-column-item';
-    const firstPartId = '#photo_';
-    const arrDivs = [$(`${firstPartId}left`), $(`${firstPartId}center`), $(`${firstPartId}right`)];
-    let counterPhotos = 0;
-    photos.forEach((photo) => {
-      const parent = arrDivs[counterPhotos];
-      const li = $('<li>', {
-        class: liClass,
-      }).appendTo(parent);
-
-      $('<img>', {
-        class: `${liClass}_image`,
-        src: photo,
-        alt: 'Photo',
-      }).appendTo(li);
-
-      counterPhotos += 1;
-
-      if (counterPhotos > 2) {
-        counterPhotos = 0;
-      }
-    });
   }
 
   showEditPage(url) {
@@ -294,4 +240,4 @@ function isCorrectNumber(num, max, min) {
 }
 
 
-export default AppView;
+export default EditorView;

@@ -1,11 +1,11 @@
 .texting-field {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
 	width: 100%;
 	border-bottom: 1px solid $text_dark_grey;
-	padding: 1.5rem 4rem;
+	padding: 1.5rem 0;
 	font-size: 1.2rem;
 
 	&_title {

@@ -1,12 +1,15 @@
 import Cookies from 'js-cookie';
 
-class AppService {
-  constructor() {}
+class ServiceVkAPI {
+  constructor() {
+    this.baseUrl = 'https://api.vk.com/method/';
+  }
 
   async getFriendsListData() {
     const token = Cookies.get('access_token');
+    const url = `${this.baseUrl}friends.get?fields=photo_100&access_token=${token}&v=5.52`;
     const data = await $.ajax({
-      url: `https://api.vk.com/method/friends.get?fields=photo_100&access_token=${token}&v=5.52`,
+      url,
       type: 'GET',
       dataType: 'JSONP',
     });
@@ -15,8 +18,9 @@ class AppService {
 
   async getFriendPhotos(userId) {
     const token = Cookies.get('access_token');
+    const url = `${this.baseUrl}photos.get?owner_id=${userId}&album_id=profile&access_token=${token}&v=5.52`;
     const data = await $.ajax({
-      url: `https://api.vk.com/method/photos.get?owner_id=${userId}&album_id=profile&access_token=${token}&v=5.52`,
+      url,
       type: 'GET',
       dataType: 'JSONP',
     });
@@ -42,4 +46,4 @@ class AppService {
 }
 
 
-export default AppService;
+export default ServiceVkAPI;

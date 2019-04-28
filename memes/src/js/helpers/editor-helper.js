@@ -16,5 +16,4 @@ class EditorHelper {
 }
 
 
-
 export default EditorHelper;

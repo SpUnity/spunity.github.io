@@ -2,61 +2,29 @@ import 'jquery-ui/ui/widgets/draggable';
 
 class PhotosView {
   constructor() {
-    this.keysObj = {
-      to_friend_list: false,
-      to_photo_list: false,
-      hide_side_bars: false,
-      authorization: false,
-      friends_list: false,
-      photo: false,
-      edit_page: false,
-      loading_page: false,
-    };
-    this.displayFlex = 'flex';
-    this.displayNone = 'none';
+    this.$mainBlock = $('#main');
   }
 
-  reloadPage(...elemsOn) {
-    const objPages = {
-      ...this.keysObj,
-    };
-
-    for (const key in objPages) {
-      if (Object.prototype.hasOwnProperty.call(objPages, key)) {
-        objPages[key] = elemsOn.includes(key);
-      }
-    }
-
-    this.changeHeaderText(objPages);
-    this.renderPage(objPages);
-  }
-
-  renderPage(objPages) {
-    const isVisible = this.displayFlex;
-    const isInvisible = this.displayNone;
-
-    for (const key in objPages) {
-      if (Object.prototype.hasOwnProperty.call(objPages, key)) {
-        const valueDisplay = objPages[key] ? isVisible : isInvisible;
-
-        $(`#${key}`).css('display', valueDisplay);
-      }
-    }
-  }
-
-  showPhotoList(photos) {
-    const liClass = 'photo-column-item';
-    const firstPartId = '#photo_';
-    const arrDivs = [$(`${firstPartId}left`), $(`${firstPartId}center`), $(`${firstPartId}right`)];
+  renderPhotosList(photos) {
+    const $main = this.$mainBlock;
+    const $photosList = createContainer('div', 'photo', 'photo').appendTo($main);
+    const tag = 'ul';
+    const className = 'photo-column';
+    const $leftColumnPhotos = createContainer(tag, className, 'photo_left').appendTo($photosList);
+    const $centerColumnPhotos = createContainer(tag, className, 'photo_center').appendTo($photosList);
+    const $rightColumnPhotos = createContainer(tag, className, 'photo_right').appendTo($photosList);
+    const arrColumns = [$leftColumnPhotos, $centerColumnPhotos, $rightColumnPhotos];
     let counterPhotos = 0;
+
+    addHeader();
+
     photos.forEach((photo) => {
-      const parent = arrDivs[counterPhotos];
-      const li = $('<li>', {
-        class: liClass,
-      }).appendTo(parent);
+      const parent = arrColumns[counterPhotos];
+      const liClassName = 'photo-column-item';
+      const li = createContainer('li', liClassName).appendTo(parent);
 
       $('<img>', {
-        class: `${liClass}_image`,
+        class: `${liClassName}_image`,
         src: photo,
         alt: 'Photo',
       }).appendTo(li);
@@ -68,35 +36,33 @@ class PhotosView {
       }
     });
   }
+}
 
-  removePhotos() {
-    $('#photo li').remove();
-  }
+function addHeader() {
+  const $header = $('#header');
+  $('<h1>', {
+    id: 'header_title',
+    text: 'Список Фото Вашего друга',
+  }).appendTo($header);
+  const $navigation = createContainer('nav', 'navigation').appendTo($header);
 
-  changeHeaderText(objPages) {
-    const $title = $('#header_title');
-    const isShownPage = true;
-    let value = '';
+  appendButton('navigation_button', 'to_friend_list', 'К списку друзей', $navigation);
+}
 
-    switch (isShownPage) {
-      case objPages.friends_list:
-        value = 'Список Ваших друзей';
-        break;
-      case objPages.photo:
-        value = 'Список Фото Вашего друга';
-        break;
-      case objPages.edit_page:
-        value = 'Создание мема';
-        break;
-      case objPages.authorization:
-        value = 'Добро Пожаловать';
-        break;
-      default:
-        value = 'Добро Пожаловать';
-    }
+function appendButton(className, id, text, parent) {
+  return $('<button>', {
+    class: className,
+    id,
+    type: 'button',
+    text,
+  }).appendTo(parent);
+}
 
-    $title.text(value);
-  }
+function createContainer(tag, className, id) {
+  return $(`<${tag}>`, {
+    class: className || null,
+    id: id || null,
+  });
 }
 
 export default PhotosView;

@@ -1,28 +1,21 @@
-import EditorService from '../services/editor-service';
+import ServiceVkAPI from '../services/service-vk-api';
 import EditorView from '../views/editor-view';
-import EditorModel from '../models/editor-model';
 import EditorHelper from '../helpers/editor-helper';
-import PhotosController from './photos-controller';
 import StartPageController from './start-page-controller';
+import ViewCommon from '../views/view-common';
 
-async function EditorController() {
-  const service = new EditorService();
+async function EditorController(imageSrc) {
+  const service = new ServiceVkAPI();
   const view = new EditorView();
-  const model = new EditorModel();
+  const viewCommon = new ViewCommon();
   const helper = new EditorHelper();
 
-  view.doBlocksDraggable();
-  service.toDataURL($targetElem.attr('src'), view.showEditPage);
-  view.reloadPage('edit_page', 'to_friend_list', 'to_photo_list', 'hide_side_bars');
-
+  await service.toDataURL(imageSrc, view.addSrcToPhoto);
+  await view.renderEditorPage();
+  viewCommon.removeLoadingPage();
 
   $('#to_friend_list').click(() => {
     executeStartPageController();
-    view.removePhotos();
-  });
-
-  $('#to_photo_list').click(() => {
-    executePhotosController();
   });
 
   $('#hide_side_bars').click(() => {
@@ -30,24 +23,36 @@ async function EditorController() {
   });
 
   $('#edit_page').click((event) => {
-    const stringCodes = $(event.target).data().code;
+    const $targetElement = $(event.target);
+    const callback = $targetElement.data('func');
+    const arrArgumentsForCallback = [];
+    let idCounter = 0;
 
-    if (!stringCodes) {
+    if (!callback) {
       return;
     }
-    const changingData = model.transformDataCode(stringCodes);
-    view.changeElem(changingData);
+
+    while ($targetElement.data(`id-${idCounter}`)) {
+      const argument = $targetElement.data(`id-${idCounter}`);
+      arrArgumentsForCallback.push(argument);
+      idCounter += 1;
+    }
+
+    const lastArgument = $targetElement.data('number');
+    arrArgumentsForCallback.push(lastArgument);
+
+    callback(...arrArgumentsForCallback);
   });
 
-  $('#user_text_top_field').on('input', () => {
-    const userText = $(this).val();
+  $('#user_text_top_field').on('input', (event) => {
+    const userText = $(event.target).val();
     const $elemForInsert = $('#center_text_top');
 
     view.insertText(userText, $elemForInsert);
   });
 
-  $('#user_text_bottom_field').on('input', () => {
-    const userText = $(this).val();
+  $('#user_text_bottom_field').on('input', (event) => {
+    const userText = $(event.target).val();
     const $elemForInsert = $('#center_text_bottom');
 
     view.insertText(userText, $elemForInsert);
@@ -56,27 +61,13 @@ async function EditorController() {
   $('#create_meme').click(() => {
     helper.getImage();
   });
-}
 
-function executeStartPageController() {
+  function executeStartPageController() {
+    viewCommon.renderLoadingPage();
+    $('*').unbind();
+    viewCommon.removeThisPage();
     StartPageController();
-    deleteHandlers();
-    $('#to_friend_list').unbind('click');
+  }
 }
-
-function executePhotosController() {
-    PhotosController();
-    deleteHandlers();
-}
-
-function deleteHandlers() {
-    $('#to_photo_list').unbind('click');
-    $('#hide_side_bars').unbind('click');
-    $('#edit_page').unbind('click');
-    $('#user_text_top_field').unbind('click');
-    $('#user_text_bottom_field').unbind('click');
-    $('#create_meme').unbind('click');
-}
-
 
 export default EditorController;

@@ -1,57 +1,65 @@
-import StartPageService from '../services/start-page-service';
+import ServiceVkAPI from '../services/service-vk-api';
 import StartPageView from '../views/start-page-view';
 import StartPageHelper from '../helpers/start-page-helper';
 import PhotosController from './photos-controller';
+import ViewCommon from '../views/view-common';
+import HelperCommon from '../helpers/helper-common';
+
+
 
 
 async function StartPageController() {
-  const service = new StartPageService();
+  const service = new ServiceVkAPI();
   const view = new StartPageView();
   const helper = new StartPageHelper();
+  const viewCommon = new ViewCommon();
+  const helperCommon = new HelperCommon();
 
+  if ( !$( `#loading_page` ) ) {
+      viewCommon.renderLoadingPage();
+  }
   await createFriendsList();
 
-  $('#friends_list').click(async (event) => {
-    const $targetElem = $(event.target);
-    let vkDataPhoto = [];
-    let transformedDataPhoto = [];
+  if ($('#friends_list')) {
+    $('#friends_list').click(async (event) => {
+      const $targetElem = $(event.target);
+      let vkDataPhoto = [];
 
-    if (helper.checkEventTarget($targetElem, 'BUTTON')) {
-      return;
-    }
-    view.reloadPage('loading_page');
-    vkDataPhoto = await service.getFriendPhotos($targetElem.data('id'));
+      if (helperCommon.checkEventTarget($targetElem, 'BUTTON')) {
+        return;
+      }
+      viewCommon.renderLoadingPage();
+      vkDataPhoto = await service.getFriendPhotos($targetElem.attr('id'));
 
-    if (!vkDataPhoto) {
-      view.reloadPage('authorization');
-      return;
-    }
-    executePhotosController();
-  });
+      if (!vkDataPhoto) {
+        view.renderAuthorization();
+        viewCommon.removeLoadingPage();
+        return;
+      }
+      executePhotosController(vkDataPhoto);
+    });
+  }
 
   async function createFriendsList() {
-    const authorizationPageId = 'authorization';
-    const friendsListPageId = 'friends_list';
-
-    view.reloadPage('loading_page');
-
-    if (helper.isTokenInUrl()) {
-      helper.setTokenData();
-    }
-    let visiblePageId = await helper.getFirstPage();
-
-    if (visiblePageId === friendsListPageId) {
+    if (helper.isTokenInUrl() || helper.findGoodToken()) {
       const friendsData = await service.getFriendsListData();
-      friendsData ? view.showFriendsList(friendsData) : visiblePageId = authorizationPageId;
+
+      if (friendsData) {
+        view.renderFriendsList(friendsData);
+        viewCommon.removeLoadingPage();
+        return;
+      }
     }
-    view.reloadPage(visiblePageId);
+
+    view.renderAuthorization();
+    viewCommon.removeLoadingPage();
+  }
+
+  function executePhotosController(photoData) {
+    $('*').unbind();
+    viewCommon.removeThisPage();
+    PhotosController(photoData);
   }
 }
-
-function executePhotosController() {
-    PhotosController();
-    $('#friends_list').unbind('click');
-}
-
 
 export default StartPageController;

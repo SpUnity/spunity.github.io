@@ -2,101 +2,83 @@ import 'jquery-ui/ui/widgets/draggable';
 
 class StartPageView {
   constructor() {
-    this.keysObj = {
-      to_friend_list: false,
-      to_photo_list: false,
-      hide_side_bars: false,
-      authorization: false,
-      friends_list: false,
-      photo: false,
-      edit_page: false,
-      loading_page: false,
-    };
-    this.displayFlex = 'flex';
-    this.displayNone = 'none';
-    this.friendsListId = 'friends_list';
+    this.$mainBlock = $('#main');
   }
 
-  reloadPage(...elemsOn) {
-    const objPages = {
-      ...this.keysObj,
-    };
-
-    for (const key in objPages) {
-      if (Object.prototype.hasOwnProperty.call(objPages, key)) {
-        objPages[key] = elemsOn.includes(key);
-      }
-    }
-
-    this.changeHeaderText(objPages);
-    this.renderPage(objPages);
-  }
-
-  renderPage(objPages) {
-    const isVisible = this.displayFlex;
-    const isInvisible = this.displayNone;
-
-    for (const key in objPages) {
-      if (Object.prototype.hasOwnProperty.call(objPages, key)) {
-        const valueDisplay = objPages[key] ? isVisible : isInvisible;
-
-        $(`#${key}`).css('display', valueDisplay);
-      }
-    }
-  }
-
-  showFriendsList(data) {
-    const friendsListPageId = this.friendsListId;
+  renderFriendsList(data) {
+    const $main = this.$mainBlock;
     const itemClassName = 'friends-item';
+    const $friensPage = createContainer('ul', 'friends', 'friends_list');
+
+    $friensPage.appendTo($main);
 
     data.forEach((item) => {
-      const li = $('<li>', { class: `${itemClassName}` }).appendTo(`#${friendsListPageId}`);
+      const $li = $('<li>', { class: `${itemClassName}` }).appendTo($friensPage);
 
       $('<img>', {
         class: `${itemClassName}_photo`,
         src: `${item.photo_100}`,
         alt: 'selfie',
-      }).appendTo(li);
+      }).appendTo($li);
 
       $('<span>', {
         class: `${itemClassName}_name`,
         text: `${item.first_name} ${item.last_name}`,
-      }).appendTo(li);
+      }).appendTo($li);
 
-      const btn = $('<button>', {
-        class: `${itemClassName}_button`,
-        text: 'Выбрать фото',
-        type: 'button',
-      }).appendTo(li);
-
-      btn.data('id', `${item.id}`);
+      appendButton(`${itemClassName}_button`, `${item.id}`, 'Выбрать фото', $li);
     });
+
+    addHeader('Список Ваших друзей');
   }
 
-  changeHeaderText(objPages) {
-    const $title = $('#header_title');
-    const isShownPage = true;
-    let value = '';
+  renderAuthorization() {
+    const $main = this.$mainBlock;
+    const url = 'https://oauth.vk.com/authorize?client_id=6939727&display=page&redirect_uri=https://spunity.github.io/memes/&scope=friends&response_type=token&v=5.95&state=123456';
+    const $container = createContainer('div', 'authorization', 'authorization');
+    const $linkBlock = createContainer('div', 'authorization-link-block');
+    const $link = $('<a>', {
+      href: url,
+    });
 
-    switch (isShownPage) {
-      case objPages.friends_list:
-        value = 'Список Ваших друзей';
-        break;
-      case objPages.photo:
-        value = 'Список Фото Вашего друга';
-        break;
-      case objPages.edit_page:
-        value = 'Создание мема';
-        break;
-      case objPages.authorization:
-        value = 'Добро Пожаловать';
-        break;
-      default:
-        value = 'Добро Пожаловать';
-    }
+    $container.appendTo($main);
 
-    $title.text(value);
+    $('<img>', {
+      class: 'authorization_logo',
+      src: './images/logo.png',
+      alt: 'Logo',
+    }).appendTo($container);
+
+    $linkBlock.appendTo($container);
+    $link.appendTo($linkBlock);
+    appendButton('authorization_button', 'authorization_button', 'Войти в свой аккаунт ВК', $link);
+
+    addHeader('Добро Пожаловать');
   }
+}
+
+function addHeader(title) {
+  const $header = $('#header');
+  $('<h1>', {
+    id: 'header_title',
+    text: title,
+  }).appendTo($header);
+}
+
+function createContainer(tag, className, id) {
+  return $(`<${tag}>`, {
+    class: className,
+    id: id || null,
+  });
+}
+
+function appendButton(className, id, text, parent) {
+  $('<button>', {
+    class: className,
+    id,
+    type: 'button',
+    text,
+  }).appendTo(parent);
 }
 
 export default StartPageView;

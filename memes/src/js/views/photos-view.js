@@ -1,4 +1,5 @@
 import 'jquery-ui/ui/widgets/draggable';
+import ViewsHelper from '../helpers/views-helper';
 
 class PhotosView {
   constructor() {
@@ -7,12 +8,12 @@ class PhotosView {
 
   renderPhotosList(photos) {
     const $main = this.$mainBlock;
-    const $photosList = createContainer('div', 'photo', 'photo').appendTo($main);
+    const $photosList = ViewsHelper.createContainer('div', 'photo', 'photo').appendTo($main);
     const tag = 'ul';
     const className = 'photo-column';
-    const $leftColumnPhotos = createContainer(tag, className, 'photo_left').appendTo($photosList);
-    const $centerColumnPhotos = createContainer(tag, className, 'photo_center').appendTo($photosList);
-    const $rightColumnPhotos = createContainer(tag, className, 'photo_right').appendTo($photosList);
+    const $leftColumnPhotos = ViewsHelper.createContainer(tag, className, 'photo_left').appendTo($photosList);
+    const $centerColumnPhotos = ViewsHelper.createContainer(tag, className, 'photo_center').appendTo($photosList);
+    const $rightColumnPhotos = ViewsHelper.createContainer(tag, className, 'photo_right').appendTo($photosList);
     const arrColumns = [$leftColumnPhotos, $centerColumnPhotos, $rightColumnPhotos];
     let counterPhotos = 0;
 
@@ -21,7 +22,7 @@ class PhotosView {
     photos.forEach((photo) => {
       const parent = arrColumns[counterPhotos];
       const liClassName = 'photo-column-item';
-      const li = createContainer('li', liClassName).appendTo(parent);
+      const li = ViewsHelper.createContainer('li', liClassName).appendTo(parent);
 
       $('<img>', {
         class: `${liClassName}_image`,
@@ -44,25 +45,9 @@ function addHeader() {
     id: 'header_title',
     text: 'Список Фото Вашего друга',
   }).appendTo($header);
-  const $navigation = createContainer('nav', 'navigation').appendTo($header);
+  const $navigation = ViewsHelper.createContainer('nav', 'navigation').appendTo($header);
 
-  appendButton('navigation_button', 'to_friend_list', 'К списку друзей', $navigation);
-}
-
-function appendButton(className, id, text, parent) {
-  return $('<button>', {
-    class: className,
-    id,
-    type: 'button',
-    text,
-  }).appendTo(parent);
-}
-
-function createContainer(tag, className, id) {
-  return $(`<${tag}>`, {
-    class: className || null,
-    id: id || null,
-  });
+  ViewsHelper.appendButton('navigation_button', 'to_friend_list', 'К списку друзей', $navigation);
 }
 
 export default PhotosView;

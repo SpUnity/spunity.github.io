@@ -1,4 +1,6 @@
 import 'jquery-ui/ui/widgets/draggable';
+import ViewsHelper from '../helpers/views-helper';
+import HelperCommon from '../helpers/helper-common';
 
 class EditorView {
   constructor() {
@@ -19,7 +21,7 @@ class EditorView {
 
   renderEditorPage() {
     const $main = this.$mainBlock;
-    const $editorPage = createContainer('div', 'editor-block', 'edit_page').appendTo($main);
+    const $editorPage = ViewsHelper.createContainer('div', 'editor-block', 'edit_page').appendTo($main);
 
     this.addHeader();
 
@@ -30,19 +32,19 @@ class EditorView {
 
   addHeader() {
     const $header = $('#header');
-    appendTextElement('h1', null, 'header_title', 'Создание мема', $header);
-    const $navigation = createContainer('nav', 'navigation').appendTo($header);
+    ViewsHelper.appendTextElement('h1', null, 'header_title', 'Создание мема', $header);
+    const $navigation = ViewsHelper.createContainer('nav', 'navigation').appendTo($header);
 
 
-    appendButton('navigation_button', 'to_friend_list', 'К списку друзей', $navigation);
-    appendButton('navigation_button', 'hide_side_bars', 'Скрыть сайдбары', $navigation);
+    ViewsHelper.appendButton('navigation_button', 'to_friend_list', 'К списку друзей', $navigation);
+    ViewsHelper.appendButton('navigation_button', 'hide_side_bars', 'Скрыть сайдбары', $navigation);
   }
 
   createEditorLeftColumn(parent) {
     const { divTag } = this;
-    const $leftColumn = createContainer(divTag, 'side-column', 'editor_left_column').appendTo(parent);
+    const $leftColumn = ViewsHelper.createContainer(divTag, 'side-column', 'editor_left_column').appendTo(parent);
 
-    appendTextElement('h2', 'side-column_title', null, 'Зона для текста', $leftColumn);
+    ViewsHelper.appendTextElement('h2', 'side-column_title', null, 'Зона для текста', $leftColumn);
     this.createEditAreaText($leftColumn, 'Верхнее поле', 'user_text_top_field', 'side_text_top', 'top-text-color', 'center_text_top');
     this.createEditAreaText($leftColumn, 'Нижнее поле', 'user_text_bottom_field', 'side_text_bottom', 'bottom-text-color', 'center_text_bottom');
   }
@@ -50,9 +52,9 @@ class EditorView {
   createEditAreaText(parent, title, textatreaId, spanId, nameInput, centerElemId) {
     const { divTag } = this;
     const spanTag = 'span';
-    const $editorText = createContainer(divTag, 'texting-field').appendTo(parent);
+    const $editorText = ViewsHelper.createContainer(divTag, 'texting-field').appendTo(parent);
 
-    appendTextElement('h3', 'texting-field_title', null, title, $editorText);
+    ViewsHelper.appendTextElement('h3', 'texting-field_title', null, title, $editorText);
 
     $('<textarea>', {
       class: 'texting-field_value',
@@ -63,21 +65,21 @@ class EditorView {
       rows: '4',
     }).appendTo($editorText);
 
-    const $editorTextSize = createContainer(divTag, 'texting-field-size').appendTo($editorText);
-    const $editorTextColor = createContainer(divTag, 'choice-color').appendTo($editorText);
-    const $editorTextColorDark = createContainer('label', 'choice-color-option').appendTo($editorTextColor);
-    const $editorTextColorLight = createContainer('label', 'choice-color-option').appendTo($editorTextColor);
-    const $buttonChangesSizeSub = appendButton('main_button', null, ' < ', $editorTextSize);
-    setDataAttributes($buttonChangesSizeSub, changeTextSize, spanId, centerElemId, -1);
-    appendTextElement(spanTag, 'editor_text-size', spanId, '40', $editorTextSize);
-    const $buttonChangesSizeAdd = appendButton('main_button', null, ' > ', $editorTextSize);
-    setDataAttributes($buttonChangesSizeAdd, changeTextSize, spanId, centerElemId, 1);
-    appendTextElement(spanTag, null, null, 'Темный', $editorTextColorDark);
-    const $inputChangesColorToDark = appendInput(nameInput, 'radio', false, $editorTextColorDark);
-    setDataAttributes($inputChangesColorToDark, changeTextColor, centerElemId, 1);
-    appendTextElement(spanTag, null, null, 'Светлый', $editorTextColorLight);
-    const $inputChangesColorToLight = appendInput(nameInput, 'radio', true, $editorTextColorLight);
-    setDataAttributes($inputChangesColorToLight, changeTextColor, centerElemId, 0);
+    const $editorTextSize = ViewsHelper.createContainer(divTag, 'texting-field-size').appendTo($editorText);
+    const $editorTextColor = ViewsHelper.createContainer(divTag, 'choice-color').appendTo($editorText);
+    const $editorTextColorDark = ViewsHelper.createContainer('label', 'choice-color-option').appendTo($editorTextColor);
+    const $editorTextColorLight = ViewsHelper.createContainer('label', 'choice-color-option').appendTo($editorTextColor);
+    const $buttonChangesSizeSub = ViewsHelper.appendButton('main_button', null, ' < ', $editorTextSize);
+    ViewsHelper.setDataAttributes($buttonChangesSizeSub, changeTextSize, spanId, centerElemId, -1);
+    ViewsHelper.appendTextElement(spanTag, 'editor_text-size', spanId, '40', $editorTextSize);
+    const $buttonChangesSizeAdd = ViewsHelper.appendButton('main_button', null, ' > ', $editorTextSize);
+    ViewsHelper.setDataAttributes($buttonChangesSizeAdd, changeTextSize, spanId, centerElemId, 1);
+    ViewsHelper.appendTextElement(spanTag, null, null, 'Темный', $editorTextColorDark);
+    const $inputChangesColorToDark = ViewsHelper.appendInput(nameInput, 'radio', false, $editorTextColorDark);
+    ViewsHelper.setDataAttributes($inputChangesColorToDark, changeTextColor, centerElemId, 1);
+    ViewsHelper.appendTextElement(spanTag, null, null, 'Светлый', $editorTextColorLight);
+    const $inputChangesColorToLight = ViewsHelper.appendInput(nameInput, 'radio', true, $editorTextColorLight);
+    ViewsHelper.setDataAttributes($inputChangesColorToLight, changeTextColor, centerElemId, 0);
   }
 
   createEditorCenterColumn(parent) {
@@ -85,23 +87,23 @@ class EditorView {
     const size = '80';
     const darkClassName = 'center-column_dark';
     const lightClassName = 'center-column_light';
-    const $centerColumn = createContainer(divTag, 'center-column', 'editor_center_column').appendTo(parent);
-    const $canvasImage = createContainer(divTag, 'center-column-container', 'canvas_image').appendTo($centerColumn);
-    const $containerImages = createContainer(divTag, 'center-column-container-images').appendTo($canvasImage);
+    const $centerColumn = ViewsHelper.createContainer(divTag, 'center-column', 'editor_center_column').appendTo(parent);
+    const $canvasImage = ViewsHelper.createContainer(divTag, 'center-column-container', 'canvas_image').appendTo($centerColumn);
+    const $containerImages = ViewsHelper.createContainer(divTag, 'center-column-container-images').appendTo($canvasImage);
 
-    const $moustacheBlock = createContainer(divTag, 'center-column-visual-effect', 'center_moustache').appendTo($containerImages);
-    const $glassesBlock = createContainer(divTag, 'center-column-visual-effect', 'center_glasses').appendTo($containerImages);
-    const $hatBlock = createContainer(divTag, 'center-column-visual-effect', 'center_hat').appendTo($containerImages);
+    const $moustacheBlock = ViewsHelper.createContainer(divTag, 'center-column-visual-effect', 'center_moustache').appendTo($containerImages);
+    const $glassesBlock = ViewsHelper.createContainer(divTag, 'center-column-visual-effect', 'center_glasses').appendTo($containerImages);
+    const $hatBlock = ViewsHelper.createContainer(divTag, 'center-column-visual-effect', 'center_hat').appendTo($containerImages);
 
     $moustacheBlock.draggable();
     $glassesBlock.draggable();
     $hatBlock.draggable();
 
-    addSvgImage(this.innerHtmlDarkMoustache, this.innerHtmlLightMoustache, $moustacheBlock);
-    addSvgImage(this.innerHtmlDarkGlasses, this.innerHtmlLightGlasses, $glassesBlock);
-    addSvgImage(this.innerHtmlDarkHat, this.innerHtmlLightHat, $hatBlock);
+    ViewsHelper.addSvgImage(this.innerHtmlDarkMoustache, this.innerHtmlLightMoustache, $moustacheBlock);
+    ViewsHelper.addSvgImage(this.innerHtmlDarkGlasses, this.innerHtmlLightGlasses, $glassesBlock);
+    ViewsHelper.addSvgImage(this.innerHtmlDarkHat, this.innerHtmlLightHat, $hatBlock);
 
-    appendButton('main_button center-column_button', 'create_meme', 'Создать', $centerColumn);
+    ViewsHelper.appendButton('main_button center-column_button', 'create_meme', 'Создать', $centerColumn);
 
     $('<a>', {
       class: 'main_button center-column_button',
@@ -110,7 +112,7 @@ class EditorView {
       text: 'Сохранить',
     }).appendTo($centerColumn);
 
-    appendTextElement('p', 'center-column_users-text-top', 'center_text_top', null, $canvasImage);
+    ViewsHelper.appendTextElement('p', 'center-column_users-text-top', 'center_text_top', null, $canvasImage);
 
     $('<img>', {
       class: 'center-column-container_image',
@@ -119,16 +121,16 @@ class EditorView {
       alt: 'Photo',
     }).appendTo($canvasImage);
 
-    appendTextElement('p', 'center-column_users-text-bottom', 'center_text_bottom', null, $canvasImage);
+    ViewsHelper.appendTextElement('p', 'center-column_users-text-bottom', 'center_text_bottom', null, $canvasImage);
   }
 
   createEditorRightColumn(parent) {
     const divTag = 'div';
     const size = '20';
     const className = 'image-field-example_view';
-    const $rightColumn = createContainer(divTag, 'side-column', 'editor_right_column').appendTo(parent);
+    const $rightColumn = ViewsHelper.createContainer(divTag, 'side-column', 'editor_right_column').appendTo(parent);
 
-    appendTextElement('h2', 'side-column_title', null, 'Зона для графики', $rightColumn);
+    ViewsHelper.appendTextElement('h2', 'side-column_title', null, 'Зона для графики', $rightColumn);
 
     this.createEditAreaImage('Усы', this.innerHtmlDarkMoustache, 'center_moustache', 'switch_for_moustache', 'moustache-color', 'image_moustache_size', 'center_dark_moustache', 'center_light_moustache', $rightColumn);
     this.createEditAreaImage('Очки', this.innerHtmlDarkGlasses, 'center_glasses', 'switch_for_glasses', 'glasses-color', 'image_glasses_size', 'center_dark_glasses', 'center_light_glasses', $rightColumn);
@@ -138,34 +140,34 @@ class EditorView {
   createEditAreaImage(title, example, centerId, switchId, radioNames, sizeTextId, centerDarkImageId, centerLightImageId, parent) {
     const labelTag = 'label';
     const divTag = 'div';
-    const $imageEditor = createContainer(divTag, 'image-field').appendTo(parent);
+    const $imageEditor = ViewsHelper.createContainer(divTag, 'image-field').appendTo(parent);
 
-    appendTextElement('h3', 'image-field_title', null, title, $imageEditor);
+    ViewsHelper.appendTextElement('h3', 'image-field_title', null, title, $imageEditor);
 
-    const $imageExample = createContainer(labelTag, 'image-field-example').appendTo($imageEditor);
-    const $editorImageColor = createContainer(divTag, 'choice-color').appendTo($imageEditor);
-    const $editorImageColorDark = createContainer(labelTag, 'choice-color-option').appendTo($editorImageColor);
-    const $editorImageColorLight = createContainer(labelTag, 'choice-color-option').appendTo($editorImageColor);
-    const $editorImageSize = createContainer(divTag, 'image-field-size').appendTo($imageEditor);
+    const $imageExample = ViewsHelper.createContainer(labelTag, 'image-field-example').appendTo($imageEditor);
+    const $editorImageColor = ViewsHelper.createContainer(divTag, 'choice-color').appendTo($imageEditor);
+    const $editorImageColorDark = ViewsHelper.createContainer(labelTag, 'choice-color-option').appendTo($editorImageColor);
+    const $editorImageColorLight = ViewsHelper.createContainer(labelTag, 'choice-color-option').appendTo($editorImageColor);
+    const $editorImageSize = ViewsHelper.createContainer(divTag, 'image-field-size').appendTo($imageEditor);
 
-    addSvgImage(example, '', $imageExample);
-    const $inputShowImage = appendInput(null, 'checkbox', false, $imageExample, switchId);
-    setDataAttributes($inputShowImage, showDivWithVisualEffect, centerId, switchId, 13);
+    ViewsHelper.addSvgImage(example, '', $imageExample);
+    const $inputShowImage = ViewsHelper.appendInput(null, 'checkbox', false, $imageExample, switchId);
+    ViewsHelper.setDataAttributes($inputShowImage, showDivWithVisualEffect, centerId, switchId, 13);
 
-    appendTextElement('span', null, null, 'Темный', $editorImageColorDark);
-    const $inputSetDarkColor = appendInput(radioNames, 'radio', true, $editorImageColorDark);
-    setDataAttributes($inputSetDarkColor, changeImageColor, centerDarkImageId, centerLightImageId, 1);
+    ViewsHelper.appendTextElement('span', null, null, 'Темный', $editorImageColorDark);
+    const $inputSetDarkColor = ViewsHelper.appendInput(radioNames, 'radio', true, $editorImageColorDark);
+    ViewsHelper.setDataAttributes($inputSetDarkColor, changeImageColor, centerDarkImageId, centerLightImageId, 1);
 
-    appendTextElement('span', null, null, 'Светлый', $editorImageColorLight);
-    const $inputSetLightColor = appendInput(radioNames, 'radio', false, $editorImageColorLight);
-    setDataAttributes($inputSetLightColor, changeImageColor, centerDarkImageId, centerLightImageId, 0);
+    ViewsHelper.appendTextElement('span', null, null, 'Светлый', $editorImageColorLight);
+    const $inputSetLightColor = ViewsHelper.appendInput(radioNames, 'radio', false, $editorImageColorLight);
+    ViewsHelper.setDataAttributes($inputSetLightColor, changeImageColor, centerDarkImageId, centerLightImageId, 0);
 
-    const $buttonChangeImageSizeSub = appendButton('main_button', null, '-10', $editorImageSize);
-    setDataAttributes($buttonChangeImageSizeSub, changeImageSize, centerDarkImageId, centerLightImageId, sizeTextId, -1);
+    const $buttonChangeImageSizeSub = ViewsHelper.appendButton('main_button', null, '-10', $editorImageSize);
+    ViewsHelper.setDataAttributes($buttonChangeImageSizeSub, changeImageSize, centerDarkImageId, centerLightImageId, sizeTextId, -1);
 
-    appendTextElement('span', 'editor_text-size', sizeTextId, '80', $editorImageSize);
-    const $buttonChangeImageSizeAdd = appendButton('main_button', null, '+10', $editorImageSize);
-    setDataAttributes($buttonChangeImageSizeAdd, changeImageSize, centerDarkImageId, centerLightImageId, sizeTextId, 1);
+    ViewsHelper.appendTextElement('span', 'editor_text-size', sizeTextId, '80', $editorImageSize);
+    const $buttonChangeImageSizeAdd = ViewsHelper.appendButton('main_button', null, '+10', $editorImageSize);
+    ViewsHelper.setDataAttributes($buttonChangeImageSizeAdd, changeImageSize, centerDarkImageId, centerLightImageId, sizeTextId, 1);
   }
 
   addSrcToPhoto(url) {
@@ -216,7 +218,7 @@ function changeTextSize(sideBarId, resultId, number) {
 
   newSizeNumber = currentSizeNumber + valueOfChange;
 
-  if (!isCorrectNumber(newSizeNumber, 100, 20)) {
+  if (!HelperCommon.isCorrectNumber(newSizeNumber, 100, 20)) {
     return;
   }
   $(`#${resultId}`).css('font-size', `${newSizeNumber}px`);
@@ -236,10 +238,10 @@ function changeImageSize(darkImageId, lightImageId, imageSizeId, number) {
   const arrIdsImages = [darkImageId, lightImageId];
   const currentWidth = $(`#${darkImageId}`).width();
   const valueOfChange = 10 * number;
-  const newWidth = currentWidth + valueOfChange || 20;
+  const newWidth = currentWidth + valueOfChange || 10;
 
 
-  if (!isCorrectNumber(newWidth, 300, 0)) {
+  if (!HelperCommon.isCorrectNumber(newWidth, 300, 0)) {
     return;
   }
 
@@ -274,58 +276,4 @@ function showDivWithVisualEffect(elemId, switchId) {
   $(`#${elemId}`).css('display', textDisplayValue);
 }
 
-function isCorrectNumber(num, max, min) {
-  return num < max && num > min;
-}
-
-
 export default EditorView;
-
-function setDataAttributes($elem, func, ...arrFuncArgs) {
-  const lastIndex = arrFuncArgs.length - 1;
-  $elem.data('func', func);
-  arrFuncArgs.forEach((item, index) => {
-    if (index === lastIndex) {
-      $elem.data('number', item);
-    }
-    $elem.data(`id-${index}`, item);
-  });
-  // number: dark === 1 : light === 0
-}
-
-function appendButton(className, id, text, parent) {
-  return $('<button>', {
-    class: className || null,
-    id: id || null,
-    type: 'button',
-    text: text || null,
-  }).appendTo(parent);
-}
-
-function createContainer(tag, className, id) {
-  return $(`<${tag}>`, {
-    class: className || null,
-    id: id || null,
-  });
-}
-
-function appendTextElement(tag, className, id, text, parent) {
-  $(`<${tag}>`, {
-    class: className || null,
-    id: id || null,
-    text: text || null,
-  }).appendTo(parent);
-}
-
-function appendInput(name, type, checked, parent, id) {
-  return $('<input>', {
-    name: name || null,
-    id: id || null,
-    type: type || null,
-    checked,
-  }).appendTo(parent);
-}
-
-function addSvgImage(darkImage, lightImage, parent) {
-  parent.html( darkImage + lightImage );
-}

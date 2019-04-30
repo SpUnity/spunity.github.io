@@ -1,5 +1,6 @@
 import 'jquery-ui/ui/widgets/draggable';
 import ViewsHelper from '../helpers/views-helper';
+import textConstants from '../helpers/text-constants';
 
 class StartPageView {
   constructor() {
@@ -8,6 +9,8 @@ class StartPageView {
 
   renderFriendsList(data) {
     const $main = this.$mainBlock;
+    const headerText = textConstants.ru.startPage.headers.friendsList || '';
+    const buttonText = textConstants.ru.startPage.buttons.chosePhoto || '';
     const itemClassName = 'friends-item';
     const $friensPage = ViewsHelper.createContainer('ul', 'friends', 'friends_list');
 
@@ -27,14 +30,16 @@ class StartPageView {
         text: `${item.first_name} ${item.last_name}`,
       }).appendTo($li);
 
-      ViewsHelper.appendButton(`${itemClassName}_button`, `${item.id}`, 'Выбрать фото', $li);
+      ViewsHelper.appendButton(`${itemClassName}_button`, `${item.id}`, buttonText, $li);
     });
 
-    addHeader('Список Ваших друзей');
+    addHeader(headerText);
   }
 
   renderAuthorization() {
     const $main = this.$mainBlock;
+    const headerText = textConstants.ru.startPage.headers.authorization || '';
+    const buttonText = textConstants.ru.startPage.buttons.logIn || '';
     const url = 'https://oauth.vk.com/authorize?client_id=6939727&display=page&redirect_uri=https://spunity.github.io/memes/&scope=friends&response_type=token&v=5.95&state=123456';
     const $container = ViewsHelper.createContainer('div', 'authorization', 'authorization');
     const $linkBlock = ViewsHelper.createContainer('div', 'authorization-link-block');
@@ -52,9 +57,9 @@ class StartPageView {
 
     $linkBlock.appendTo($container);
     $link.appendTo($linkBlock);
-    ViewsHelper.appendButton('authorization_button', 'authorization_button', 'Войти в свой аккаунт ВК', $link);
+    ViewsHelper.appendButton('authorization_button', 'authorization_button', buttonText, $link);
 
-    addHeader('Добро Пожаловать');
+    addHeader(headerText);
   }
 }
 

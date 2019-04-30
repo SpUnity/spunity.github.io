@@ -1,5 +1,6 @@
 import 'jquery-ui/ui/widgets/draggable';
 import ViewsHelper from '../helpers/views-helper';
+import textConstants from '../helpers/text-constants';
 
 class PhotosView {
   constructor() {
@@ -40,14 +41,16 @@ class PhotosView {
 }
 
 function addHeader() {
+  const headerText = textConstants.ru.photosPage.header || '';
+  const buttonText = textConstants.ru.commonButtons.toFriendsList || '';
   const $header = $('#header');
   $('<h1>', {
     id: 'header_title',
-    text: 'Список Фото Вашего друга',
+    text: headerText,
   }).appendTo($header);
   const $navigation = ViewsHelper.createContainer('nav', 'navigation').appendTo($header);
 
-  ViewsHelper.appendButton('navigation_button', 'to_friend_list', 'К списку друзей', $navigation);
+  ViewsHelper.appendButton('navigation_button', 'to_friend_list', buttonText, $navigation);
 }
 
 export default PhotosView;

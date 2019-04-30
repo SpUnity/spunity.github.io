@@ -21,7 +21,7 @@ class ViewsHelper {
       parent.html( darkImage + lightImage );
     }
 
-    static appendInput(name, type, checked, parent, id) {
+    static appendInput(name, type, checked, parent, id = null) {
       return $('<input>', {
         name,
         id,
@@ -30,7 +30,7 @@ class ViewsHelper {
       }).appendTo(parent);
     }
 
-    static appendTextElement(tag, className, id, text, parent) {
+    static appendTextElement(tag, className = null, id = null, text, parent) {
       $(`<${tag}>`, {
         class: className,
         id,
@@ -38,16 +38,16 @@ class ViewsHelper {
       }).appendTo(parent);
     }
 
-    static createContainer(tag, className, id) {
+    static createContainer(tag, className = null, id = null) {
       return $(`<${tag}>`, {
-        class: className || null,
-        id: id || null,
+        class: className,
+        id: id,
       });
     }
 
-    static appendButton(className, id, text, parent) {
+    static appendButton(className = null, id, text, parent) {
       return $('<button>', {
-        class: className || null,
+        class: className,
         id,
         type: 'button',
         text,

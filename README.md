@@ -1,25 +1,25 @@
-# Учебные проекты:
+# Educational projects:
 
-## Проект по верстке
+## HTML & CSS
 
-[Просмотр станицы](https://spunity.github.io/BUS/public/)
+[Result](https://spunity.github.io/BUS/public/)
 
-[Просмотр кода](https://github.com/SpUnity/spunity.github.io/tree/master/BUS)
+[Code](https://github.com/SpUnity/spunity.github.io/tree/master/BUS)
 
-## Промежуточный проект (коллекция)
+## Collection (jQuery)
 
-[Просмотр станицы](https://spunity.github.io/collection/)
+[Result](https://spunity.github.io/collection/)
 
-[Просмотр кода](https://github.com/SpUnity/spunity.github.io/tree/master/collection)
+[Code](https://github.com/SpUnity/spunity.github.io/tree/master/collection)
 
-## Тот же проект, сделанный на VueJS
+## Collection (VueJS)
 
-[Просмотр станицы](https://spunity.github.io/collection-vue/)
+[Result](https://spunity.github.io/collection-vue/)
 
-[Просмотр кода](https://github.com/SpUnity/spunity.github.io/tree/master/collection-vue)
+[Code](https://github.com/SpUnity/spunity.github.io/tree/master/collection-vue)
 
-## Итоговый проект (создание мемов с использованием данных со страницы VK пользователя)
+## Final project (jQuery, VK API)
 
-[Просмотр станицы](https://spunity.github.io/memes/)
+[Result](https://spunity.github.io/memes/)
 
-[Просмотр кода](https://github.com/SpUnity/spunity.github.io/tree/master/memes)
+[Code](https://github.com/SpUnity/spunity.github.io/tree/master/memes)
